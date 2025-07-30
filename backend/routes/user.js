@@ -46,4 +46,44 @@ router.post('/login', async (req, res) => {
   }
 });
 
+// Get recruiter profile (for demo, returns first recruiter)
+router.get('/profile', async (req, res) => {
+  try {
+    // In production, use authentication to get recruiter ID
+    const user = await User.findOne({ role: /recruiter/i });
+    if (!user) return res.status(404).json({ message: 'Recruiter not found' });
+    res.json({
+      user: {
+        username: user.name,
+        email: user.email,
+        role: user.role
+      }
+    });
+  } catch (err) {
+    res.status(500).json({ message: 'Error fetching profile', error: err.message });
+  }
+});
+
+router.get('/ar-profile', async (req, res) => {
+  try {
+    const role = req.query.role; // ?role=AR%20Requestor
+    if (!role) return res.status(400).json({ message: 'Role required' });
+
+    const user = await User.findOne({ role: new RegExp(role, 'i') });
+
+    if (!user) return res.status(404).json({ message: `${role} not found` });
+
+    res.json({
+      user: {
+        username: user.name,
+        email: user.email,
+        role: user.role
+      }
+    });
+  } catch (err) {
+    res.status(500).json({ message: 'Error fetching profile', error: err.message });
+  }
+});
+
+
 module.exports = router;

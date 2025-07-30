@@ -20,18 +20,18 @@ function Layout({ active, children }) {
             🏠 <span className="link-text">Home</span>
           </NavLink>
           <NavLink
-            to="/jd-compared"
-            className={active === 'jd-compared' ? 'active' : ''}
+            to="/profile"
+            className={active === 'profile' ? 'active' : ''}
             title="Compared Profiles"
           >
-            📄 <span className="link-text">Compared Profiles</span>
+            📄 <span className="link-text">Profile</span>
           </NavLink>
           <NavLink
             to="/email-status"
             className={active === 'email-status' ? 'active' : ''}
             title="Notification Status"
           >
-            📬 <span className="link-text">Notification Status</span>
+            📬 <span className="link-text">Application Status</span>
           </NavLink>
         </nav>
       </div>

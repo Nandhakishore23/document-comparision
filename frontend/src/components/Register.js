@@ -45,7 +45,7 @@ function Register() {
     };
     try {
       setLoading(true);
-      const response = await fetch('http://localhost:7117/api/User', {
+      const response = await fetch('http://localhost:5000/api/User', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

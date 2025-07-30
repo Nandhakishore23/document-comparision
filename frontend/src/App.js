@@ -6,7 +6,9 @@ import Register from './components/Register';
 import RecruiterConsole from './components/RecruiterConsole';
 import ARDashboard from './components/ARDashboard';
 import PrivateRoute from './components/PrivateRoute';
-
+import Postjob from './components/Postjob';
+import RecruiterProfile from './components/RecuirterProfile';
+import Profile from './components/Profile';
 
 function App() {
   return (
@@ -23,6 +25,26 @@ function App() {
             <PrivateRoute>
               <ARDashboard />
             </PrivateRoute>
+          } 
+        />
+        <Route 
+          path="/postjob" 
+          element={
+            <Postjob />
+          } 
+        />
+
+        <Route 
+          path="/profile" 
+          element={
+            <Profile />
+          } 
+        />
+
+        <Route 
+          path="/recuirter-profile" 
+          element={
+            <RecruiterProfile />
           } 
         />
        

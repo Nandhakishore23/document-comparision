@@ -1,7 +1,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+
 const userRoutes = require('./routes/user');
+const jobRoutes = require('./routes/job');
 
 
 
@@ -15,11 +17,13 @@ mongoose.connect('mongodb://localhost:27017/hexa', {
 }).then(() => console.log('MongoDB connected'))
   .catch(err => console.error('MongoDB connection error:', err));
 
+
 app.use('/api/User', userRoutes);
+app.use('/api/jobs', jobRoutes);
 
 
 
-const PORT = process.env.PORT || 7117;
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
 });
