@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import Layout from './RecruiterLayout';
+import './Postjob.css'; // Optional styling
 
 const experienceOptions = [
   { value: 'freshers', label: 'Freshers' },
@@ -56,6 +58,7 @@ const Postjob = () => {
 
 
   return (
+    <Layout>
     <div className="postjob-container">
       <h2>Post a Job</h2>
       <form onSubmit={handleSubmit} className="postjob-form">
@@ -87,6 +90,7 @@ const Postjob = () => {
       </form>
       {message && <p>{message}</p>}
     </div>
+    </Layout>
   );
 };
 

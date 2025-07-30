@@ -34,9 +34,39 @@ const ARDashboard = () => {
     setSelectedJob(job);
   };
 
-  const handleApply = () => {
-    alert('Application submitted!'); // Placeholder for real apply logic
-  };
+  const handleApply = async () => {
+  const user = JSON.parse(localStorage.getItem('user')); // 👈 fetch logged-in user
+  if (!user || !user._id || !user.name || !user.email) {
+    alert('User not found. Please login again.');
+    return;
+  }
+
+  try {
+    const res = await fetch('http://localhost:5678/webhook/test', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        jobId: selectedJob._id,
+        userId: user._id,                  // 👈 use actual ID
+        candidateName: user.name, 
+        jobRole:selectedJob.role,        // 👈 use actual name
+        jobDescription:selectedJob.description,                // 👈 use actual email
+      }),
+    });
+
+    const result = await res.json();
+    if (res.ok) {
+      alert('Applied Successfully!');
+    } else {
+      alert(result.error || 'Failed to apply.');
+    }
+  } catch (error) {
+    console.error('Application error:', error);
+    alert('Error occurred while applying.');
+  }
+};
+
+
 
   return (
     <Layout>
@@ -56,6 +86,13 @@ const ARDashboard = () => {
                 >
                   <h3>{job.title}</h3>
                   <p>{job.role}</p>
+                  <p><strong>Posted on:</strong> {new Date(job.postedAt).toLocaleDateString('en-GB', {
+  day: '2-digit',
+  month: 'short',
+  year: 'numeric'
+})}</p>
+
+                  
                 </div>
               ))
             ) : (
@@ -70,6 +107,12 @@ const ARDashboard = () => {
               <p><strong>Description:</strong> {selectedJob.description}</p>
               <p><strong>Skills:</strong> {selectedJob.skills}</p>
               <p><strong>Experience:</strong> {selectedJob.experience}</p>
+              <p><strong>Posted on:</strong> {new Date(selectedJob.postedAt).toLocaleDateString('en-GB', {
+  day: '2-digit',
+  month: 'short',
+  year: 'numeric'
+})}</p>
+
               <button onClick={handleApply}>Apply</button>
             </div>
           )}

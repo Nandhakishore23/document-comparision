@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import Layout from './RecruiterLayout';
+import './Recruiterprofile.css';
 
 const RecruiterProfile = () => {
   const [profile, setProfile] = useState(null);
@@ -25,6 +27,7 @@ const RecruiterProfile = () => {
   }, []);
 
   return (
+    <Layout>
     <div className="recruiter-profile">
       <h2>Recruiter Profile</h2>
       {loading ? (
@@ -41,6 +44,7 @@ const RecruiterProfile = () => {
         <p>No profile data found.</p>
       )}
     </div>
+    </Layout>
   );
 };
 

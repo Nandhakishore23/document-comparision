@@ -24,7 +24,7 @@ function Layout({ active, children }) {
             className={active === 'profile' ? 'active' : ''}
             title="Compared Profiles"
           >
-            📄 <span className="link-text">Profile</span>
+            👨🏻‍💼 <span className="link-text">Profile</span>
           </NavLink>
           <NavLink
             to="/email-status"

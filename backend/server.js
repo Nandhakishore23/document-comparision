@@ -4,7 +4,8 @@ const cors = require('cors');
 
 const userRoutes = require('./routes/user');
 const jobRoutes = require('./routes/job');
-
+const resumeRoutes = require('./routes/resume');
+const applicationRoutes = require('./routes/applications');
 
 
 const app = express();
@@ -20,8 +21,8 @@ mongoose.connect('mongodb://localhost:27017/hexa', {
 
 app.use('/api/User', userRoutes);
 app.use('/api/jobs', jobRoutes);
-
-
+app.use('/api/resumes', resumeRoutes);
+app.use('/api/applications', applicationRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

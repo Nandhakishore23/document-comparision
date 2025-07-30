@@ -24,14 +24,14 @@ function Layout({ active, children }) {
             className={active === 'recuirter-profile' ? 'active' : ''}
             title="Reports"
           >
-            📁 <span className="link-text">Profile</span>
+            👨🏻‍💻 <span className="link-text">Profile</span>
           </NavLink>
           <NavLink
             to="/postjob"
             className={active === 'postjob' ? 'active' : ''}
             title="Reports"
           >
-            📁 <span className="link-text">Post Jobs</span>
+            💼 <span className="link-text">Post Jobs</span>
           </NavLink>
 
 
