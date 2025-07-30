@@ -1,0 +1,40 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 45px;
+  z-index: 999;
+  display: flex;
+  font-size: 20px;
+  font-weight: 700;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 32px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(60,72,88,0.06);
+  color: #3a5a97;
+  border-bottom: 3px solid #f9a8d4;
+}
+
+.nav-links a,
+.logout-button {
+  color: #3a5a97;
+  text-decoration: none;
+  margin-left: 18px;
+  padding: 7px 16px;
+  border: 1.5px solid #3a5a97;
+  border-radius: 8px;
+  background: transparent;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+}
+
+.nav-links a:hover,
+.logout-button:hover {
+  background: #f9a8d4;
+  color: #23272f;
+  border: 1.5px solid #f9a8d4;
+}
