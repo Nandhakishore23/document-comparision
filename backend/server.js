@@ -6,6 +6,7 @@ const userRoutes = require('./routes/user');
 const jobRoutes = require('./routes/job');
 const resumeRoutes = require('./routes/resume');
 const applicationRoutes = require('./routes/applications');
+const applyRoutes = require('./routes/apply');
 
 
 const app = express();
@@ -23,6 +24,7 @@ app.use('/api/User', userRoutes);
 app.use('/api/jobs', jobRoutes);
 app.use('/api/resumes', resumeRoutes);
 app.use('/api/applications', applicationRoutes);
+app.use('/api/apply', applyRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

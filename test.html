@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Upload Resume</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+    }
+    form {
+      margin-top: 20px;
+    }
+    input[type="file"] {
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Upload Your Resume (PDF)</h2>
+  <form id="uploadForm" enctype="multipart/form-data">
+    <input type="file" name="resume" accept="application/pdf" required />
+    <br />
+    <button type="submit">Upload</button>
+  </form>
+
+  <p id="responseText"></p>
+
+  <script>
+    document.getElementById('uploadForm').addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const formData = new FormData(this);
+
+      try {
+        const response = await fetch('http://localhost:5678/webhook-test/test', {
+          method: 'POST',
+          body: formData,
+        });
+
+        const result = await response.text();
+        document.getElementById('responseText').innerText = result;
+      } catch (error) {
+        console.error('Upload failed:', error);
+        document.getElementById('responseText').innerText = 'Upload failed. See console.';
+      }
+    });
+  </script>
+</body>
+</html>

@@ -9,6 +9,7 @@ import PrivateRoute from './components/PrivateRoute';
 import Postjob from './components/Postjob';
 import RecruiterProfile from './components/RecuirterProfile';
 import Profile from './components/Profile';
+import Status from './components/Status';
 
 function App() {
   return (
@@ -32,6 +33,13 @@ function App() {
           element={
             <Postjob />
           } 
+        />
+
+        
+        <Route
+        path="/status"
+        element={<Status />}
+        
         />
 
         <Route 

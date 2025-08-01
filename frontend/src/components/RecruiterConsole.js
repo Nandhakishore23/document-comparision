@@ -97,6 +97,31 @@ const RecruiterConsole = () => {
     fetchJobs();
   }, []);
 
+  const updateStatus = async (applicationId, status) => {
+  try {
+    const res = await fetch(`http://localhost:5000/api/applications/${applicationId}/status`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ status }),
+    });
+
+    const data = await res.json();
+    if (data.success) {
+      // Re-fetch applicants to reflect the change
+      fetchApplicants(selectedJobId);
+    } else {
+      console.error('Failed to update status:', data.error);
+      alert('Failed to update status.');
+    }
+  } catch (err) {
+    console.error('Error updating status:', err);
+    alert('Error updating status.');
+  }
+};
+
+
   const fetchApplicants = async (jobId) => {
     setSelectedJobId(jobId);
     const res = await fetch(`http://localhost:5000/api/applications/${jobId}`);
@@ -154,11 +179,37 @@ const RecruiterConsole = () => {
                 <li>No applications found.</li>
               ) : (
                 applicants.map((app, i) => (
-                  <li key={i}>
-                    <strong>Name:</strong> {app.candidateName} |
-                    <strong>Email:</strong> {app.email}
-                  </li>
-                ))
+  <li key={i}>
+    <p><strong>Name:</strong> {app.candidateName}</p>
+    <p><strong>Email:</strong> {app.email}</p>
+    <p><strong>Status:</strong> {app.result?.status || 'Pending'}</p>
+    <p><strong>Match:</strong> {app.result?.match}%</p>
+
+    {app.result?.reason && (
+      <p><strong>Reason:</strong> {app.result.reason}</p>
+    )}
+
+    <div style={{ marginTop: '8px' }}>
+      <button
+        onClick={() => updateStatus(app._id, 'Approved')}
+        disabled={app.result?.status === 'Approved'}
+        style={{ marginRight: '10px' }}
+      >
+        Approve
+      </button>
+      <button
+        onClick={() => updateStatus(app._id, 'Rejected')}
+        disabled={app.result?.status === 'Rejected'}
+      >
+        Reject
+      </button>
+    </div>
+
+    <hr />
+  </li>
+))
+
+
               )}
             </ul>
           </div>

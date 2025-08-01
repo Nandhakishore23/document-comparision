@@ -27,8 +27,8 @@ function Layout({ active, children }) {
             👨🏻‍💼 <span className="link-text">Profile</span>
           </NavLink>
           <NavLink
-            to="/email-status"
-            className={active === 'email-status' ? 'active' : ''}
+            to="/status"
+            className={active === 'status' ? 'active' : ''}
             title="Notification Status"
           >
             📬 <span className="link-text">Application Status</span>
