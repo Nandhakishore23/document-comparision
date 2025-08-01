@@ -127,8 +127,8 @@ router.post('/', async (req, res) => {
   try {
     const { userId, candidateName, email, jobId, result } = req.body;
     
-    // console.log('Full request body:', JSON.stringify(req.body, null, 2));
-    // console.log('Result structure:', result);
+    console.log('Full request body:', JSON.stringify(req.body, null, 2));
+    console.log('Result structure:', result);
     
     // Handle the actual data structure - result is an array with stringified JSON
     let resultData;
@@ -140,7 +140,7 @@ router.post('/', async (req, res) => {
       resultData = parsedResult[0]?.output;
     }
     
-    //console.log('Extracted resultData:', resultData);
+    console.log('Extracted resultData:', resultData);
     
     if (!resultData) {
       return res.status(400).json({ error: 'No output from AI.' });
@@ -182,7 +182,7 @@ router.post('/', async (req, res) => {
       return res.status(400).json({ error: 'Invalid match percentage format.' });
     }
 
-    // Create new application document with only match percentage
+    // Create new application document with match percentage and reason
     const application = new Application({
       userId,
       candidateName,
@@ -190,6 +190,7 @@ router.post('/', async (req, res) => {
       jobId,
       result: {
         match: matchPercentage,
+        reason: matchResult.reason || '', // Store the reason from AI response
       },
     });
 
@@ -201,7 +202,6 @@ router.post('/', async (req, res) => {
     res.status(500).json({ error: 'Internal server error while saving application.' });
   }
 });
-
 
 // Get all applications for a job
 router.get('/:jobId', async (req, res) => {

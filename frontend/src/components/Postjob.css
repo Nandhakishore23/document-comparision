@@ -1,4 +1,4 @@
-/* Postjob.css */
+/* Postjob.css
 
 .postjob-container {
   max-width: 600px;
@@ -73,4 +73,140 @@ p {
   text-align: center;
   font-weight: 500;
   color: green;
+} */
+
+
+/* Postjob.css */
+
+.postjob-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.postjob-container h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.postjob-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.postjob-form label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+  color: #555;
+  font-size: 1rem;
+}
+
+.postjob-form input,
+.postjob-form textarea,
+.postjob-form select {
+  margin-top: 0.5rem;
+  padding: 0.75rem;
+  border: 2px solid #e1e5e9;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.postjob-form input:focus,
+.postjob-form textarea:focus,
+.postjob-form select:focus {
+  outline: none;
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.postjob-form textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.postjob-form button {
+  background-color: #4f46e5;
+  color: white;
+  padding: 0.875rem 2rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-top: 1rem;
+}
+
+.postjob-form button:hover {
+  background-color: #4338ca;
+  transform: translateY(-1px);
+}
+
+.postjob-form button:active {
+  transform: translateY(0);
+}
+
+.postjob-container p {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border-radius: 6px;
+  font-weight: 500;
+  text-align: center;
+}
+
+/* Success message styling */
+.postjob-container p:contains("successfully") {
+  background-color: #d1fae5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+}
+
+/* Error message styling */
+.postjob-container p:not(:contains("successfully")) {
+  background-color: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #fca5a5;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .postjob-container {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+  
+  .postjob-container h2 {
+    font-size: 1.75rem;
+  }
+  
+  .postjob-form {
+    gap: 1.25rem;
+  }
+  
+  .postjob-form input,
+  .postjob-form textarea,
+  .postjob-form select {
+    padding: 0.625rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .postjob-container {
+    margin: 0.5rem;
+    padding: 1rem;
+  }
+  
+  .postjob-container h2 {
+    font-size: 1.5rem;
+  }
 }

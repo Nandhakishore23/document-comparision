@@ -77,6 +77,7 @@ const applicationSchema = new mongoose.Schema({
   candidateName: String,
   email: String,
   jobId: { type: mongoose.Schema.Types.ObjectId, ref: 'Job' },
+  
   result: {
     name: String,
     status: String,
