@@ -343,28 +343,59 @@ const ARDashboard = () => {
   const [isApplying, setIsApplying] = useState(false);
 
   // Fetch jobs from backend
-  useEffect(() => {
-    const fetchJobs = async () => {
-      try {
-        const response = await fetch('http://localhost:5000/api/jobs');
-        const data = await response.json();
-        console.log('Fetched jobs:', data);
+  // useEffect(() => {
+  //   const fetchJobs = async () => {
+  //     try {
+  //       const response = await fetch('http://localhost:5000/api/jobs');
+  //       const data = await response.json();
+  //       console.log('Fetched jobs:', data);
 
-        if (Array.isArray(data)) {
-          setJobs(data);
-        } else if (Array.isArray(data.jobs)) {
-          setJobs(data.jobs);
-        } else {
-          setError('Unexpected response format from server.');
-        }
-      } catch (err) {
-        console.error('Error fetching jobs:', err);
-        setError('Failed to load jobs from server.');
+  //       if (Array.isArray(data)) {
+  //         setJobs(data);
+  //       } else if (Array.isArray(data.jobs)) {
+  //         setJobs(data.jobs);
+  //       } else {
+  //         setError('Unexpected response format from server.');
+  //       }
+  //     } catch (err) {
+  //       console.error('Error fetching jobs:', err);
+  //       setError('Failed to load jobs from server.');
+  //     }
+  //   };
+
+  //   fetchJobs();
+  // }, []);
+
+useEffect(() => {
+  const fetchJobs = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/api/jobs');
+      const data = await response.json();
+      console.log('Fetched jobs:', data);
+
+      // Ensure you're filtering out closed jobs
+      let jobsList = [];
+      if (Array.isArray(data)) {
+        jobsList = data;
+      } else if (Array.isArray(data.jobs)) {
+        jobsList = data.jobs;
+      } else {
+        setError('Unexpected response format from server.');
+        return;
       }
-    };
 
-    fetchJobs();
-  }, []);
+      // ✅ Filter out closed jobs
+      const openJobs = jobsList.filter(job => !job.isClosed);
+      setJobs(openJobs);
+    } catch (err) {
+      console.error('Error fetching jobs:', err);
+      setError('Failed to load jobs from server.');
+    }
+  };
+
+  fetchJobs();
+}, []);
+
 
   const handleJobClick = (job) => {
     setSelectedJob(job);
@@ -402,6 +433,7 @@ const ARDashboard = () => {
     formData.append('userId', user._id);
     formData.append('candidateName', user.name);
     formData.append('email', user.email);
+    formData.append('jobTitle', selectedJob.title);
     formData.append('jobRole', selectedJob.role);
     formData.append('jobDescription', selectedJob.description);
     formData.append('skills', selectedJob.skills || '');
@@ -429,6 +461,10 @@ const ARDashboard = () => {
             result: [result],
           }),
         });
+        if (saveRes.status === 409) {
+  alert('You have already applied for this job.');
+  return;
+}
 
         const saveData = await saveRes.json();
         if (saveRes.ok) {
@@ -447,6 +483,9 @@ const ARDashboard = () => {
       setIsApplying(false);
     }
   };
+
+  
+
 
   return (
     <Layout>
