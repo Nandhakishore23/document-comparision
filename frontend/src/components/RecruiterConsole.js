@@ -874,9 +874,13 @@ const RecruiterConsole = () => {
 
       if (res.ok && data.success) {
         alert('Job closed and pending applicants rejected.');
-        const updatedRes = await fetch('http://localhost:5000/api/jobs');
-        const updatedData = await updatedRes.json();
-        setJobs(updatedData.jobs || []);
+        // 
+        setJobs(prevJobs =>
+  prevJobs.map(job =>
+    job._id === jobId ? { ...job, isClosed: true } : job
+  )
+);
+
       } else {
         alert(data.error || 'Failed to close the job.');
       }
@@ -996,7 +1000,15 @@ const RecruiterConsole = () => {
                   <div className="job-actions">
                     <button className="btn btn-primary" onClick={() => fetchApplicants(job._id, job.title)}>View Applications</button>
                     <button className="btn btn-secondary" onClick={() => downloadApplicantsPDF(job._id, job.title)}>Download PDF</button>
-                    <button className="btn btn-danger" onClick={() => handleCloseJob(job._id)}>Close Job</button>
+                    {/* <button className="btn btn-danger" onClick={() => handleCloseJob(job._id)}>Close Job</button> */}
+                    <button
+  className={`btn ${job.isClosed ? 'btn-disabled' : 'btn-danger'}`}
+  onClick={() => handleCloseJob(job._id)}
+  disabled={job.isClosed}
+>
+  {job.isClosed ? 'Closed' : 'Close Job'}
+</button>
+
                   </div>
                 </div>
               ))
