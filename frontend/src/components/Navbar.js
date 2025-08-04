@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+// import img from './images/genhire.jpg';
 import './Navbar.css';
 
 function Navbar() {
@@ -17,7 +18,11 @@ function Navbar() {
 
   return (
     <nav className="navbar">
-      <div className="logo">Document Similarity Comparison and Ranking</div>
+      <div className="logo">GenHire</div>
+      {/* <div className="logo">
+        <img src="./images/genhire.jpg" alt="GenHire Logo" />
+        <img src={img} width={250} height={50} alt="GenHire Logo" />
+      </div> */}
       <div className="nav-links">
         {isLoggedIn ? (
           <button className="logout-button" onClick={handleLogout}>

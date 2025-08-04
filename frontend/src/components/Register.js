@@ -248,7 +248,7 @@ function Register() {
       <div className="auth-overlay"></div>
       <div className="auth-wrapper">
         <div className="auth-left">
-          <h1>Join Document Similarity Comparison</h1>
+          <h1>Join GenHire</h1>
           <p>Register to streamline your hiring process by comparing JDs with consultant resumes in seconds.</p>
         </div>
         <form className="auth-form" onSubmit={handleSubmit} autoComplete="on">
