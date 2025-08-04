@@ -441,7 +441,7 @@ useEffect(() => {
 
     try {
       // Send to n8n webhook
-      const res = await fetch('http://localhost:5678/webhook-test/test', {
+      const res = await fetch('https://tharunvs.app.n8n.cloud/webhook/test', {
         method: 'POST',
         body: formData,
       });
