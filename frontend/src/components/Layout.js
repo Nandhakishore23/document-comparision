@@ -166,40 +166,48 @@ function Layout({ active, children }) {
   return (
     <div className="layout-container">
       <div className={`sidebar ${collapsed ? 'collapsed' : ''} ${mobileOpen ? 'mobile-open' : ''}`}>
+        {/* Logo section */}
+        {/* <div className="sidebar-logo">
+          <span role="img" aria-label="Logo" className="logo-icon">🌐</span>
+        </div> */}
+        {/* Toggle button (only on desktop) */}
         {!isMobile && (
           <button className="toggle-btn" onClick={handleToggle} aria-label="Toggle sidebar">
             ☰
           </button>
         )}
-        <nav>
-          <NavLink
-            to="/dashboard"
-            className={({ isActive }) => isActive || active === 'dashboard' ? 'active' : ''}
-            title="Home"
-            onClick={handleLinkClick}
-          >
-            <span>🏠</span>
-            <span className="link-text">Home</span>
-          </NavLink>
-          <NavLink
-            to="/profile"
-            className={({ isActive }) => isActive || active === 'profile' ? 'active' : ''}
-            title="Profile"
-            onClick={handleLinkClick}
-          >
-            <span>👨🏻‍💼</span>
-            <span className="link-text">Profile</span>
-          </NavLink>
-          <NavLink
-            to="/status"
-            className={({ isActive }) => isActive || active === 'status' ? 'active' : ''}
-            title="Application Status"
-            onClick={handleLinkClick}
-          >
-            <span>📬</span>
-            <span className="link-text">Application Status</span>
-          </NavLink>
-        </nav>
+        {/* Nav links: hide when collapsed on desktop, show on mobile or expanded */}
+        {(!collapsed || isMobile || mobileOpen) && (
+          <nav>
+            <NavLink
+              to="/dashboard"
+              className={({ isActive }) => isActive || active === 'dashboard' ? 'active' : ''}
+              title="Home"
+              onClick={handleLinkClick}
+            >
+              <span className="link-span">🏠</span>
+              <span className="link-text">Home</span>
+            </NavLink>
+            <NavLink
+              to="/profile"
+              className={({ isActive }) => isActive || active === 'profile' ? 'active' : ''}
+              title="Profile"
+              onClick={handleLinkClick}
+            >
+              <span className="link-span">👨🏻‍💼</span>
+              <span className="link-text">Profile</span>
+            </NavLink>
+            <NavLink
+              to="/status"
+              className={({ isActive }) => isActive || active === 'status' ? 'active' : ''}
+              title="Application Status"
+              onClick={handleLinkClick}
+            >
+              <span className="link-span">📬</span>
+              <span className="link-text">Application Status</span>
+            </NavLink>
+          </nav>
+        )}
       </div>
 
       <div className={`main-content ${collapsed ? 'collapsed' : ''}`}>
