@@ -186,10 +186,9 @@ function Login() {
       <div className="auth-overlay"></div>
       <div className="auth-wrapper">
         <div className="auth-left">
-          <h1>Welcome to Document Similarity Comparison</h1>
+          <h1>Welcome to GenHire</h1>
           <p>
-            Effortlessly match job descriptions with consultant profiles.
-            Streamline your recruitment process with precision and AI assistance.
+            Automate Everything, Cloudify Everything, Transform Customer Experiences
           </p>
         </div>
         <form className="auth-form" onSubmit={handleLogin} autoComplete="on">
@@ -230,7 +229,7 @@ function Login() {
             {loading ? <span className="spinner"></span> : 'Login'}
           </button>
           <p className="register-prompt">
-            If not registered, <Link to="/register">register here</Link>.
+            If Not Registered, <Link to="/register">Register Here</Link>.
           </p>
         </form>
       </div>

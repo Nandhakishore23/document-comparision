@@ -51,6 +51,7 @@
   position: sticky;
   top: 0;
   z-index: 1000;
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -81,16 +82,25 @@
   color: white;
   text-decoration: none;
   padding: 0.75rem 1.5rem;
-  border-radius: 25px;
+  /* border-radius: 25px; */
   font-weight: 600;
   font-size: 0.95rem;
   transition: all 0.3s ease;
   border: 1px solid rgba(255, 255, 255, 0.3);
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   min-width: 80px;
+  clip-path: polygon(
+    10% 0%,   /* top-left slope in */
+    90% 0%,   /* top-right slope in */
+    100% 50%, /* right middle point */
+    90% 100%, /* bottom-right slope out */
+    10% 100%, /* bottom-left slope out */
+    0% 50%    /* left middle point */
+  );
 }
 
 .login-button:hover {
@@ -106,7 +116,7 @@
 }
 
 /* Logout Button */
-.logout-button {
+/* .logout-button {
   background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
   color: white;
   border: none;
@@ -118,7 +128,31 @@
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
   min-width: 80px;
+} */
+
+.logout-button {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+  min-width: 100px;
+
+  /* Hexagon shape (sides only) */
+  clip-path: polygon(
+    10% 0%,   /* top-left slope in */
+    90% 0%,   /* top-right slope in */
+    100% 50%, /* right middle point */
+    90% 100%, /* bottom-right slope out */
+    10% 100%, /* bottom-left slope out */
+    0% 50%    /* left middle point */
+  );
 }
+
 
 .logout-button:hover {
   background: linear-gradient(135deg, #ff5252 0%, #d32f2f 100%);
