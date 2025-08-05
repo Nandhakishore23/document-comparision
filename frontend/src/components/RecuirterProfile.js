@@ -169,19 +169,20 @@ const RecruiterProfile = () => {
             </div>
 
             <div className="profile-stats">
-              <div className="stat-card">
-                <div className="stat-number">{profile.jobsPosted || 0}</div>
-                <div className="stat-label">Jobs Posted</div>
-              </div>
-              <div className="stat-card">
-                <div className="stat-number">{profile.applicationsReceived || 0}</div>
-                <div className="stat-label">Applications</div>
-              </div>
-              <div className="stat-card">
-                <div className="stat-number">{profile.candidatesHired || 0}</div>
-                <div className="stat-label">Hired</div>
-              </div>
-            </div>
+  <div className="stat-card">
+    <div className="stat-number">{profile.jobsPosted || 0}</div>
+    <div className="stat-label">Jobs Posted</div>
+  </div>
+  <div className="stat-card">
+    <div className="stat-number">{profile.applicationsReceived || 0}</div>
+    <div className="stat-label">Applications</div>
+  </div>
+  <div className="stat-card">
+    <div className="stat-number">{profile.candidatesHired || 0}</div>
+    <div className="stat-label">Hired</div>
+  </div>
+</div>
+
           </div>
         ) : (
           <div className="no-data-container">
