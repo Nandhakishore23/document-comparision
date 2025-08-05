@@ -27,10 +27,23 @@
 
 .sidebar.collapsed {
   width: 90px;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  /* align-items: center; */
 }
 
 /* Toggle Button */
+.sidebar.collapsed .toggle-btn-container {
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+}
 .toggle-btn {
+  margin-top: 10px;
+  left: 80%;
   position: absolute;
   top: 1rem;
   right: 1rem;
@@ -48,6 +61,11 @@
   justify-content: center;
   box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
   z-index: 10;
+}
+
+.sidebar.collapsed .toggle-btn {
+  /* position: absolute; */
+  left: 30%;
 }
 
 .toggle-btn:hover {
@@ -254,6 +272,10 @@
     margin-right: 0;
     font-size: 1.3rem;
   }
+
+  .sidebar .toggle-btn {
+    left: 20%;
+  }
 }
 
 @media (max-width: 640px) {
@@ -263,10 +285,14 @@
   }
   
   .sidebar nav {
-    margin-top: 2rem;
+    margin-top: 4rem;
     padding: 0 0.5rem;
+    /* margin-left: 0.5rem; */
   }
-  
+  /* .sidebar.collapsed .toggle-btn{
+    left: 10%;
+  }
+   */
   .sidebar nav a {
     padding: 0.75rem 0.25rem;
     margin: 0.25rem 0;
@@ -403,6 +429,7 @@
   font-size: 2rem;
   font-weight: bold;
   margin-bottom: 2rem;
+  -webkit-user-select: none;
   user-select: none;
 }
 
@@ -413,7 +440,8 @@
 
 /* Hide nav when collapsed on desktop, show on mobile */
 .sidebar.collapsed nav {
-  display: none;
+  display: flex;
+  flex-direction: column;
 }
 
 @media (max-width: 768px) {
