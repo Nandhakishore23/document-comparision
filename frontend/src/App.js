@@ -10,6 +10,7 @@ import Postjob from './components/Postjob';
 import RecruiterProfile from './components/RecuirterProfile';
 import Profile from './components/Profile';
 import Status from './components/Status';
+import ChatBot from './components/Chatbot';
 
 function App() {
   return (
@@ -67,6 +68,7 @@ function App() {
         />
         
       </Routes> 
+      <ChatBot />
     </Router>
   );
 }
