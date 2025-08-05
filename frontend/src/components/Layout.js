@@ -177,7 +177,7 @@ function Layout({ active, children }) {
               ☰
             </button>
           </div>
-          {/* )} */}
+          { /* )} */}
         {/* Nav links: hide when collapsed on desktop, show on mobile or expanded */}
         {/* {(!collapsed || isMobile || mobileOpen) && ( */}
         <div className="nav-links">

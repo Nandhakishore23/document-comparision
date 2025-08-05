@@ -347,6 +347,9 @@
     bottom: 0;
     z-index: 200;
   }
+  .sidebar.collapsed .toggle-btn{
+  display: none;
+}
 }
 
 /* Smooth scrolling for sidebar */
