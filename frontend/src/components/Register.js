@@ -292,7 +292,7 @@ function Register() {
               autoComplete="new-password"
             />
             <span className="input-icon input-eye" onClick={() => setShowPassword((v) => !v)} tabIndex={0} role="button" aria-label="Toggle password visibility">
-              {showPassword ? <FaEyeSlash /> : <FaEye />}
+              {showPassword ? <FaEye /> : <FaEyeSlash />}
             </span>
           </div>
 
@@ -308,7 +308,7 @@ function Register() {
               autoComplete="new-password"
             />
             <span className="input-icon input-eye" onClick={() => setShowConfirmPassword((v) => !v)} tabIndex={0} role="button" aria-label="Toggle confirm password visibility">
-              {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
+              {showConfirmPassword ? <FaEye /> : <FaEyeSlash />}
             </span>
           </div>
 

@@ -171,13 +171,16 @@ function Layout({ active, children }) {
           <span role="img" aria-label="Logo" className="logo-icon">🌐</span>
         </div> */}
         {/* Toggle button (only on desktop) */}
-        {!isMobile && (
-          <button className="toggle-btn" onClick={handleToggle} aria-label="Toggle sidebar">
-            ☰
-          </button>
-        )}
+        {/* {isMobile && ( */}
+          <div className="toggle-btn-container">
+            <button className="toggle-btn" onClick={handleToggle} aria-label="Toggle sidebar">
+              ☰
+            </button>
+          </div>
+          { /* )} */}
         {/* Nav links: hide when collapsed on desktop, show on mobile or expanded */}
-        {(!collapsed || isMobile || mobileOpen) && (
+        {/* {(!collapsed || isMobile || mobileOpen) && ( */}
+        <div className="nav-links">
           <nav>
             <NavLink
               to="/dashboard"
@@ -207,7 +210,7 @@ function Layout({ active, children }) {
               <span className="link-text">Application Status</span>
             </NavLink>
           </nav>
-        )}
+        </div>
       </div>
 
       <div className={`main-content ${collapsed ? 'collapsed' : ''}`}>

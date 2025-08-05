@@ -222,7 +222,7 @@ function Login() {
               role="button"
               aria-label="Toggle password visibility"
             >
-              {showPassword ? <FaEyeSlash /> : <FaEye />}
+              {showPassword ?  <FaEye /> : <FaEyeSlash />}
             </span>
           </div>
           <button type="submit" disabled={loading} className="auth-btn">
