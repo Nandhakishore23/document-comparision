@@ -78,6 +78,7 @@
 
 
 import React, { useEffect, useState } from 'react';
+import Bot from './Chatbot';
 import Layout from './Layout';
 import './Status.css';
 
@@ -88,8 +89,7 @@ const Status = () => {
   const [stats, setStats] = useState({
     total: 0,
     pending: 0,
-    underProcess: 0,
-    accepted: 0,
+    approved: 0,
     rejected: 0
   });
 
@@ -128,34 +128,25 @@ const Status = () => {
   const calculateStats = (apps) => {
     const total = apps.length;
     let pending = 0;
-    let underProcess = 0;
-    let accepted = 0;
+    let approved = 0;
     let rejected = 0;
 
     apps.forEach(app => {
       const status = app.result?.status?.toLowerCase() || 'pending';
       
-      if (status === 'pending' || status === 'applied') {
+      if (!status || status === 'pending') {
         pending++;
-      } else if (
-        status === 'under review' || 
-        status === 'interview scheduled' || 
-        status === 'interview completed' ||
-        status === 'on hold'
-      ) {
-        underProcess++;
-      } else if (
-        status === 'interview accepted' || 
-        status === 'selected' || 
-        status === 'hired'
-      ) {
-        accepted++;
-      } else if (status === 'rejected' || status === 'declined') {
+      } else if (status === 'approved') {
+        approved++;
+      } else if (status === 'rejected') {
         rejected++;
+      } else {
+        // Default any unknown status to pending
+        pending++;
       }
     });
 
-    setStats({ total, pending, underProcess, accepted, rejected });
+    setStats({ total, pending, approved, rejected });
   };
 
   const getStatusClass = (status) => {
@@ -164,25 +155,11 @@ const Status = () => {
     const statusLower = status.toLowerCase();
     
     switch (statusLower) {
-      case 'pending':
-      case 'applied':
-        return 'status-pending';
-      case 'under review':
-        return 'status-under-review';
-      case 'interview scheduled':
-        return 'status-interview-scheduled';
-      case 'interview completed':
-        return 'status-interview-completed';
-      case 'interview accepted':
-        return 'status-interview-accepted';
-      case 'selected':
-      case 'hired':
-        return 'status-selected';
+      case 'approved':
+        return 'status-approved';
       case 'rejected':
-      case 'declined':
         return 'status-rejected';
-      case 'on hold':
-        return 'status-on-hold';
+      case 'pending':
       default:
         return 'status-pending';
     }
@@ -251,13 +228,13 @@ const Status = () => {
             <div className="stat-number">{stats.pending}</div>
             <div className="stat-label">Pending Review</div>
           </div>
-          <div className="stat-card accepted">
-            <div className="stat-number">{stats.underProcess}</div>
-            <div className="stat-label">Under Process</div>
+          <div className="stat-card approved">
+            <div className="stat-number">{stats.approved}</div>
+            <div className="stat-label">Approved</div>
           </div>
-          <div className="stat-card accepted">
-            <div className="stat-number">{stats.accepted}</div>
-            <div className="stat-label">Accepted/Selected</div>
+          <div className="stat-card rejected">
+            <div className="stat-number">{stats.rejected}</div>
+            <div className="stat-label">Rejected</div>
           </div>
         </div>
 
@@ -268,7 +245,6 @@ const Status = () => {
             <thead>
               <tr>
                 <th>Job Title</th>
-                <th>Company</th>
                 <th>Status</th>
                 <th>Applied Date</th>
                 <th>Last Updated</th>
@@ -279,9 +255,6 @@ const Status = () => {
                 <tr key={i}>
                   <td className="job-title">
                     {app.jobId?.title || 'Job Title Not Available'}
-                  </td>
-                  <td>
-                    {app.jobId?.company || 'Company Not Available'}
                   </td>
                   <td>
                     <span className={`status-badge ${getStatusClass(app.result?.status)}`}>
@@ -308,6 +281,7 @@ const Status = () => {
           </table>
         </div>
       </div>
+      <Bot />
     </Layout>
   );
 };

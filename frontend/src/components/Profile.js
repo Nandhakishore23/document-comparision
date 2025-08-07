@@ -153,6 +153,7 @@
 
 
 import React, { useEffect, useState } from 'react';
+import Bot from './Chatbot';
 import Layout from './Layout';
 import './profile.css';
 
@@ -309,6 +310,7 @@ const Profile = () => {
           )}
         </div>
       </div>
+      <Bot />
     </Layout>
   );
 };

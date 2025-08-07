@@ -54,4 +54,41 @@ router.get('/download/:resumeId', async (req, res) => {
   }
 });
 
+// server/routes/resumeRoutes.js or similar
+router.get('/download/:id', async (req, res) => {
+  try {
+    const resume = await Resume.findById(req.params.id);
+
+    if (!resume) {
+      return res.status(404).send('Resume not found');
+    }
+
+    res.set({
+      'Content-Type': resume.contentType,
+      'Content-Disposition': `attachment; filename="${resume.filename}"`,
+    });
+
+    res.send(resume.data); // Make sure it's raw buffer, not JSON string
+  } catch (err) {
+    console.error('Error in resume download:', err);
+    res.status(500).send('Server error');
+  }
+});
+
+// Get resume by application ID
+router.get('/resume/:applicationId', async (req, res) => {
+  try {
+    const application = await Application.findById(req.params.applicationId);
+    if (!application || !application.resumeUrl) {
+      return res.status(404).json({ error: 'Resume not found' });
+    }
+    
+    const filePath = path.join(__dirname, '..', application.resumeUrl);
+    res.sendFile(filePath);
+  } catch (err) {
+    res.status(500).json({ error: 'Error retrieving resume' });
+  }
+});
+
+
 module.exports = router;

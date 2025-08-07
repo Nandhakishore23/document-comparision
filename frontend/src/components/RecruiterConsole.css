@@ -214,6 +214,205 @@
   line-height: 1.3;
 }
 
+/* additional feature */
+/* Add these styles to your existing RecruiterConsole.css file */
+
+/* Job Title Section with Applicant Count */
+.job-title-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.applicant-count-badge {
+  background: #007bff;
+  color: white;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: bold;
+  min-width: 30px;
+  flex-shrink: 0;
+}
+
+.applicant-count-badge:empty::after {
+  content: '0';
+}
+
+.job-title {
+  margin: 0;
+  flex: 1;
+}
+
+.applicant-count-text {
+  color: #007bff;
+  font-weight: 600;
+}
+
+/* Resume Section Styles */
+.resume-section {
+  margin-top: 15px;
+  padding: 10px 0;
+  border-top: 1px solid #eee;
+}
+
+.resume-label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.resume-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.btn-view-resume {
+  background: #28a745;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.btn-view-resume:hover {
+  background: #218838;
+  transform: translateY(-1px);
+}
+
+.btn-download-resume {
+  background: #17a2b8;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.btn-download-resume:hover {
+  background: #138496;
+  transform: translateY(-1px);
+}
+
+.no-resume-text {
+  color: #6c757d;
+  font-style: italic;
+  font-size: 12px;
+}
+
+/* Enhanced Job Card Layout */
+.job-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .job-title-section {
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .applicant-count-badge {
+    width: 24px;
+    height: 24px;
+    font-size: 12px;
+  }
+  
+  .resume-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .btn-view-resume,
+  .btn-download-resume {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Loading spinner for resume actions */
+.resume-loading {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #f3f3f3;
+  border-top: 2px solid #007bff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Enhanced Modal Content */
+.applicant-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 15px;
+  background: #f9f9f9;
+  transition: all 0.3s;
+}
+
+.applicant-card:hover {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transform: translateY(-2px);
+}
+
+/* Improved button styling */
+.applicant-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+  flex-wrap: wrap;
+}
+
+.applicant-actions .btn {
+  flex: 1;
+  min-width: 120px;
+}
+
+/* Additional count styling */
+.console-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.jobs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 20px;
+  padding: 20px 0;
+}
+
 /* pdf */
 .btn-download {
   background-color: #007bff;
