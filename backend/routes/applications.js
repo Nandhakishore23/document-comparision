@@ -443,8 +443,35 @@ router.put('/:id/status', async (req, res) => {
     // 4. Prepare email
     const subject = `Update on your application for ${jobTitle}`;
     const message = status === 'Approved'
-      ? `Hi ${application.candidateName},\n\n🎉 Congratulations! Your application for "${jobTitle}" has been approved. Our team will contact you soon.\n\nBest regards,\nRecruitment Team`
-      : `Hi ${application.candidateName},\n\nThank you for applying for "${jobTitle}". Unfortunately, you were not selected for the next stage.\n\nWe wish you the best in your career!\n\nRecruitment Team`;
+      ? `Hi ${application.candidateName},
+
+🎉 Congratulations! We're excited to inform you that your application for the role of ${jobTitle} has been successfully reviewed and approved by our hiring team.
+
+Based on your qualifications and experience, you have been shortlisted to proceed to the next stage of our recruitment process. This is a significant step forward, and we truly appreciate your interest in joining our organization.
+
+What’s next?
+Our recruitment team will be in touch with you shortly to share further details regarding the upcoming round(s). This may include a technical interview, an assignment, or a discussion with the hiring manager, depending on the role requirements.
+
+Please keep an eye on your email or phone for further communication. In the meantime, feel free to prepare any relevant documents or questions you may have for the next phase.
+
+We wish you the very best for the next round and look forward to learning more about you.
+
+Warm regards,  
+Recruitment Team
+`
+      : `Hi ${application.candidateName},
+
+Thank you for applying for the position of ${jobTitle} and for taking the time to go through our recruitment process.
+
+After careful consideration and review of your profile, we regret to inform you that you have not been shortlisted for the next stage of the selection process. This decision was not easy, as we received a large number of strong applications, and yours was among them.
+
+Please don’t be discouraged. We truly appreciate your interest in our organization and the effort you put into your application. We encourage you to apply for future opportunities that match your skills and experience.
+
+We wish you all the best in your job search and future career endeavors.
+
+Warm regards,  
+Recruitment Team
+`;
 
     // 5. Send email
     await transporter.sendMail({

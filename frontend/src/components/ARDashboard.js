@@ -954,7 +954,7 @@ const ARDashboard = () => {
       formData.append('experience', selectedJob.experience || '');
 
       // Send to n8n webhook
-      const res = await fetch('https://tharunvs.app.n8n.cloud/webhook/test', {
+      const res = await fetch('https://vstharun.app.n8n.cloud/webhook/test', {
         method: 'POST',
         body: formData,
       });
