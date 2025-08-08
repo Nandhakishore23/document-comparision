@@ -365,7 +365,7 @@ const ChatBot = () => {
     <div className={`chat-window ${isOpen ? 'open' : ''}`}>
       <div className="chat-header">
         <div>
-          <h3 className="chat-title">HexaBuddy 
+          <h3 className="chat-title">HexaBuddy 🤖
           </h3>
           <div className="chat-status">● Online</div>
           <div className="session-info">Session: {sessionId.slice(-8)}</div>
