@@ -368,7 +368,83 @@ router.post('/', upload.single('resume'), async (req, res) => {
   }
 });
 
+// Add this new route to your existing applications router
 
+// Bulk update application statuses
+router.put('/bulk-status', async (req, res) => {
+  const { applicationIds, status } = req.body;
+
+  try {
+    // Validate input
+    if (!applicationIds || !Array.isArray(applicationIds) || applicationIds.length === 0) {
+      return res.status(400).json({ success: false, error: 'Application IDs array is required' });
+    }
+
+    if (!['Approved', 'Rejected'].includes(status)) {
+      return res.status(400).json({ success: false, error: 'Invalid status. Must be Approved or Rejected' });
+    }
+
+    // Find all applications and update them
+    const applications = await Application.find({ _id: { $in: applicationIds } });
+    
+    if (applications.length === 0) {
+      return res.status(404).json({ success: false, error: 'No applications found' });
+    }
+
+    // Prepare bulk email data
+    const emailPromises = [];
+    
+    for (const application of applications) {
+      // Update application status
+      application.result.status = status;
+      await application.save();
+
+      // Find job title for email
+      const job = await Job.findById(application.jobId);
+      const jobTitle = job ? job.title : 'your applied job';
+
+      // Prepare email content
+      const subject = `Update on your application for ${jobTitle}`;
+      const message = status === 'Approved'
+        ? `Hi ${application.candidateName},\n\n🎉 Congratulations! Your application for "${jobTitle}" has been approved. Our team will contact you soon.\n\nBest regards,\nRecruitment Team`
+        : `Hi ${application.candidateName},\n\nThank you for applying for "${jobTitle}". Unfortunately, you were not selected for the next stage.\n\nWe wish you the best in your career!\n\nRecruitment Team`;
+
+      // Add email to promise array
+      emailPromises.push(
+        transporter.sendMail({
+          from: "vstharun2022@gmail.com",
+          to: application.email,
+          subject,
+          text: message,
+        }).catch(err => {
+          console.error(`Failed to send email to ${application.email}:`, err.message);
+          return null; // Continue with other emails even if one fails
+        })
+      );
+    }
+
+    // Send all emails concurrently
+    const emailResults = await Promise.allSettled(emailPromises);
+    
+    // Count successful emails
+    const successfulEmails = emailResults.filter(result => result.status === 'fulfilled' && result.value !== null).length;
+    const failedEmails = emailResults.length - successfulEmails;
+
+    res.json({ 
+      success: true, 
+      message: `Successfully updated ${applications.length} application(s).`,
+      emailStats: {
+        successful: successfulEmails,
+        failed: failedEmails,
+        total: emailResults.length
+      }
+    });
+
+  } catch (error) {
+    console.error('Bulk status update error:', error.message);
+    res.status(500).json({ success: false, error: 'Internal server error during bulk update' });
+  }
+});
 
 // Get all applications for a job
 router.get('/:jobId', async (req, res) => {
