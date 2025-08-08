@@ -11,7 +11,7 @@ const ChatBot = () => {
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
 
-  const WEBHOOK_URL = 'https://tharunvs.app.n8n.cloud/webhook/chat';
+  const WEBHOOK_URL = 'https://vstharun.app.n8n.cloud/webhook/chat';
 
   // Generate a unique session ID when component mounts
   useEffect(() => {
@@ -365,7 +365,8 @@ const ChatBot = () => {
     <div className={`chat-window ${isOpen ? 'open' : ''}`}>
       <div className="chat-header">
         <div>
-          <h3 className="chat-title">Chat Assistant</h3>
+          <h3 className="chat-title">HexaBuddy 
+          </h3>
           <div className="chat-status">● Online</div>
           <div className="session-info">Session: {sessionId.slice(-8)}</div>
         </div>

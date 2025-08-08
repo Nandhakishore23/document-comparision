@@ -1,52 +1,4 @@
-/* RecruiterProfile.css
 
-.recruiter-profile {
-  max-width: 600px;
-  margin: 50px auto;
-  background-color: #ffffff;
-  padding: 30px 40px;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.recruiter-profile h2 {
-  text-align: center;
-  margin-bottom: 25px;
-  color: #333;
-}
-
-.profile-details {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  font-size: 16px;
-  color: #444;
-}
-
-.profile-details p {
-  background-color: #f9f9f9;
-  padding: 12px 15px;
-  border-radius: 8px;
-  border-left: 4px solid #007bff;
-  margin: 0;
-}
-
-.profile-details strong {
-  color: #222;
-}
-
-.recruiter-profile p {
-  text-align: center;
-  font-weight: 500;
-  font-size: 15px;
-}
-
-.recruiter-profile p[style*="red"] {
-  color: red !important;
-} */
-
-/* Recruiterprofile.css */
 
 .recruiter-profile {
   max-width: 1200px;
@@ -92,7 +44,7 @@
   100% { transform: rotate(360deg); }
 }
 
-/* Error States */
+
 .error-container,
 .no-data-container {
   display: flex;
@@ -132,7 +84,7 @@
   background-color: #4338ca;
 }
 
-/* Profile Content */
+
 .profile-content {
   display: grid;
   grid-template-columns: 1fr;
@@ -332,7 +284,7 @@
   letter-spacing: 0.5px;
 }
 
-/* Responsive design */
+
 @media (max-width: 768px) {
   .profile-stats {
     flex-direction: column;
@@ -349,7 +301,6 @@
   }
 }
 
-/* Loading state for stats */
 .stats-loading {
   display: flex;
   gap: 20px;
@@ -378,7 +329,6 @@
   }
 }
 
-/* Profile Stats */
 .profile-stats {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -418,7 +368,6 @@
   font-weight: 500;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
   .recruiter-profile {
     padding: 1rem;

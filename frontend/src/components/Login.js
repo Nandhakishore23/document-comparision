@@ -404,14 +404,23 @@ function Login() {
           role: result.role
         }));
 
+        // // ✅ Navigate based on role
+        // if (result.role === 'AR Requestor') {
+        //   navigate('/dashboard');
+        // } else if (result.role === 'Recruiter') {
+        //   navigate('/recruiter');
+        // } else {
+        //   navigate('/dashboard');
+        // }
         // ✅ Navigate based on role
         if (result.role === 'AR Requestor') {
-          navigate('/dashboard');
+          navigate('/home');
         } else if (result.role === 'Recruiter') {
           navigate('/recruiter');
         } else {
-          navigate('/dashboard');
+          navigate('/home');
         }
+        
       } else {
         const errorText = await response.text();
         setError(`Login failed: ${errorText}`);
@@ -425,7 +434,7 @@ function Login() {
 
   return (
     <div className="auth-container fade-in">
-      <div className="auth-overlay"></div>
+      
       <div className="auth-wrapper">
         <div className="auth-left">
           <h1>Welcome to GenHire</h1>

@@ -206,6 +206,10 @@
   margin-bottom: 1.5rem;
 }
 
+.filter-header{
+  background-color: #f8e8e8;
+}
+
 .job-title {
   color: #2c3e50;
   font-size: 1.5rem;
@@ -541,249 +545,7 @@
   border-color: #007bff;
 }
 
-/* Add these styles to your existing RecruiterConsole.css file */
 
-/* Bulk Actions Header */
-.bulk-actions-header {
-  background: #f8f9fa;
-  border: 1px solid #dee2e6;
-  border-radius: 8px;
-  padding: 16px;
-  margin-bottom: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 16px;
-}
-
-.selection-controls {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-  flex-wrap: wrap;
-}
-
-.select-all-checkbox {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
-  font-weight: 500;
-  color: #495057;
-}
-
-.selected-count {
-  background: #007bff;
-  color: white;
-  padding: 4px 12px;
-  border-radius: 16px;
-  font-size: 14px;
-  font-weight: 500;
-}
-
-/* Number Selector Styles */
-.number-selector {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: white;
-  border: 1px solid #dee2e6;
-  border-radius: 6px;
-  padding: 8px 12px;
-}
-
-.number-label {
-  font-size: 14px;
-  color: #495057;
-  font-weight: 500;
-  margin: 0;
-}
-
-.number-input {
-  width: 80px;
-  border: none;
-  outline: none;
-  font-size: 14px;
-  text-align: center;
-  background: transparent;
-}
-
-.number-input::-webkit-outer-spin-button,
-.number-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-.number-input[type=number] {
-  -moz-appearance: textfield;
-}
-
-.number-helper {
-  font-size: 12px;
-  color: #6c757d;
-  font-style: italic;
-}
-
-.bulk-action-buttons {
-  display: flex;
-  gap: 12px;
-}
-
-.btn-bulk-approve, .btn-bulk-reject {
-  padding: 8px 16px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: 500;
-  font-size: 14px;
-  transition: all 0.2s ease;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.btn-bulk-approve {
-  background: #28a745;
-  color: white;
-}
-
-.btn-bulk-approve:hover:not(:disabled) {
-  background: #218838;
-  transform: translateY(-1px);
-}
-
-.btn-bulk-reject {
-  background: #dc3545;
-  color: white;
-}
-
-.btn-bulk-reject:hover:not(:disabled) {
-  background: #c82333;
-  transform: translateY(-1px);
-}
-
-.btn-bulk-approve:disabled,
-.btn-bulk-reject:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-  transform: none;
-}
-
-/* Applicant Card Modifications */
-.applicant-card.selected {
-  border-color: #007bff;
-  background: #f8f9ff;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.15);
-}
-
-.applicant-header {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  margin-bottom: 16px;
-}
-
-.applicant-selector {
-  flex-shrink: 0;
-  margin-top: 4px;
-}
-
-.applicant-checkbox {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-}
-
-/* Custom Checkbox Styles */
-.select-all-checkbox input[type="checkbox"],
-.applicant-checkbox input[type="checkbox"] {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-}
-
-.select-all-checkbox .checkmark,
-.applicant-checkbox .checkmark {
-  height: 20px;
-  width: 20px;
-  background-color: #fff;
-  border: 2px solid #dee2e6;
-  border-radius: 4px;
-  position: relative;
-  transition: all 0.2s ease;
-}
-
-.select-all-checkbox:hover .checkmark,
-.applicant-checkbox:hover .checkmark {
-  border-color: #007bff;
-}
-
-.select-all-checkbox input:checked ~ .checkmark,
-.applicant-checkbox input:checked ~ .checkmark {
-  background-color: #007bff;
-  border-color: #007bff;
-}
-
-.select-all-checkbox .checkmark:after,
-.applicant-checkbox .checkmark:after {
-  content: "";
-  position: absolute;
-  display: none;
-  left: 6px;
-  top: 2px;
-  width: 6px;
-  height: 10px;
-  border: solid white;
-  border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
-}
-
-.select-all-checkbox input:checked ~ .checkmark:after,
-.applicant-checkbox input:checked ~ .checkmark:after {
-  display: block;
-}
-
-/* Applicants Section */
-.applicants-section {
-  display: flex;
-  flex-direction: column;
-}
-
-.applicants-list {
-  max-height: 60vh;
-  overflow-y: auto;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .bulk-actions-header {
-    flex-direction: column;
-    align-items: stretch;
-  }
-  
-  .selection-controls {
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 16px;
-  }
-  
-  .number-selector {
-    order: -1;
-    width: 100%;
-    justify-content: center;
-  }
-  
-  .bulk-action-buttons {
-    justify-content: center;
-  }
-  
-  .btn-bulk-approve, .btn-bulk-reject {
-    flex: 1;
-    justify-content: center;
-  }
-}
 
 .select-all-checkbox input:checked ~ .checkmark,
 .applicant-checkbox input:checked ~ .checkmark {
@@ -1227,6 +989,38 @@
   margin-bottom: 0.5rem;
 }
 
+.header-stats {
+  display: flex;                  /* Arrange in horizontal line */
+  justify-content: space-around;  /* Even spacing between items */
+  align-items: center;            /* Vertically center content */
+  background: #f8f9fa;            /* Light background */
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.stat-card {
+  background: white;
+  padding: 15px 25px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  min-width: 120px;               /* Keep cards uniform size */
+}
+
+.stat-number {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #007bff;                 /* Blue number */
+}
+
+.stat-label {
+  font-size: 0.95rem;
+  color: #555;
+  margin-top: 5px;
+}
+
+
 .reason-text {
   color: #5a6c7d;
   font-size: 0.9rem;
@@ -1321,5 +1115,257 @@
   
   .job-card {
     padding: 1rem;
+  }
+}
+
+.results-summary {
+  display: flex;
+  justify-content: space-between;   /* Count on left, filters on right */
+  align-items: center;
+  background: #f8f9fa;
+  padding: 10px 15px;
+  border-radius: 8px;
+  flex-wrap: wrap;                  /* Wrap on small screens */
+  gap: 10px;                         /* Space between wrapped items */
+}
+
+.results-count {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.active-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.filter-tag {
+  background: #e9f5ff;
+  color: #007bff;
+  border-radius: 20px;
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid #b3d7ff;
+}
+
+.filter-tag button {
+  background: none;
+  border: none;
+  color: #007bff;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}
+
+.filter-tag button:hover {
+  color: #0056b3;
+}
+
+
+/* --- Container --- */
+.filter-section {
+  background: #fff;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 2px 8px white;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* --- Header Row --- */
+.filter-header {
+  display: flex;
+  color: #c4e2ff;
+  background-color: white;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* --- Search Bar --- */
+.search-container {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #fff;
+  padding: 6px 10px;
+}
+
+.search-input {
+  border: none;
+  outline: none;
+  padding: 6px;
+  flex: 1;
+  font-size: 0.95rem;
+}
+
+.search-icon {
+  font-size: 1.2rem;
+  color: #888;
+}
+
+/* --- Filter Actions --- */
+.filter-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.filter-toggle-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #333;
+  background: #f1f3f5;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.filter-toggle-btn.active {
+  background: #007bff;
+  color: #fff;
+}
+
+.filter-toggle-btn:hover {
+  background: #e1e4e8;
+  color: #333;
+}
+
+.filter-count {
+  background: #dc3545;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 10px;
+  font-size: 0.75rem;
+}
+
+.filter-arrow {
+  font-size: 0.8rem;
+  transition: transform 0.2s;
+}
+
+.filter-arrow.up {
+  transform: rotate(180deg);
+}
+
+.clear-filters-btn {
+  background: transparent;
+  border: none;
+  color: #dc3545;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+/* --- Filter Controls --- */
+.filter-controls {
+  background: #f8f9fa;
+  padding: 10px;
+  border-radius: 6px;
+}
+
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 180px;
+}
+
+.filter-group label {
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.filter-input,
+.filter-select {
+  padding: 6px 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+/* --- Results Summary --- */
+.results-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  background: #f8f9fa;
+  padding: 8px 12px;
+  border-radius: 6px;
+}
+
+.results-count {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #333;
+}
+
+/* --- Active Filters (Tags) --- */
+.active-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.filter-tag {
+  background: #e9f5ff;
+  color: #007bff;
+  border-radius: 20px;
+  padding: 4px 10px;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid #b3d7ff;
+}
+
+.filter-tag button {
+  background: none;
+  border: none;
+  color: #007bff;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}
+
+.filter-tag button:hover {
+  color: #0056b3;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 600px) {
+  .filter-row {
+    flex-direction: column;
+  }
+
+  .filter-group {
+    width: 100%;
+  }
+
+  .filter-header {
+    flex-direction: column;
+    align-items: stretch;
+    background-color: white;
   }
 }
