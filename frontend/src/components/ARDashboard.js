@@ -1240,7 +1240,7 @@ const ARDashboard = () => {
   useEffect(() => {
     const fetchJobs = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/jobs');
+        const response = await fetch('https://document-comparision.onrender.com/api/jobs');
         const data = await response.json();
         console.log('Fetched jobs:', data);
 
@@ -1346,7 +1346,7 @@ const ARDashboard = () => {
   const checkUserResumes = async (userId) => {
     setIsLoadingResumes(true);
     try {
-      const response = await fetch(`http://localhost:5000/api/resumes/${userId}`);
+      const response = await fetch(`https://document-comparision.onrender.com/api/resumes/${userId}`);
       const data = await response.json();
       
       if (response.ok) {
@@ -1431,7 +1431,7 @@ const ARDashboard = () => {
       
       if (useExistingResume) {
         // Get the existing resume data
-        const resumeResponse = await fetch(`http://localhost:5000/api/resumes/download/${selectedResumeId}`);
+        const resumeResponse = await fetch(`https://document-comparision.onrender.com/api/resumes/download/${selectedResumeId}`);
         if (!resumeResponse.ok) {
           throw new Error('Failed to fetch existing resume');
         }
@@ -1464,7 +1464,7 @@ const ARDashboard = () => {
 
       if (res.ok) {
         // Save application in MongoDB
-        const saveRes = await fetch('http://localhost:5000/api/applications', {
+        const saveRes = await fetch('https://document-comparision.onrender.com/api/applications', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
