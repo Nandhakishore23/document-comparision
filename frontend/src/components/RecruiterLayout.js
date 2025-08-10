@@ -277,13 +277,13 @@ function RecruiterLayout({ active, children }) {
         
         {/* Desktop Navigation Links */}
         <div className="navbar-center">
-          <NavLink
+          {/* <NavLink
             to="/home"
             className={({ isActive }) => isActive || active === 'recruiter' ? 'nav-link active' : 'nav-link'}
             onClick={handleLinkClick}
           >
             Home
-          </NavLink>
+          </NavLink> */}
           <NavLink
             to="/recruiter"
             className={({ isActive }) => isActive || active === 'recruiter' ? 'nav-link active' : 'nav-link'}
@@ -323,21 +323,22 @@ function RecruiterLayout({ active, children }) {
 
       {/* Mobile Menu */}
       <div className={`mobile-menu ${mobileOpen ? 'open' : ''}`}>
-        <NavLink
+        {/* <NavLink
           to="/home"
           className={({ isActive }) => isActive || active === 'recruiter' ? 'mobile-nav-link active' : 'mobile-nav-link'}
           onClick={handleLinkClick}
         >
           <span className="mobile-link-icon">🏠</span>
           Home
-        </NavLink>
+        </NavLink> */}
         <NavLink
           to="/recruiter"
           className={({ isActive }) => isActive || active === 'recruiter' ? 'mobile-nav-link active' : 'mobile-nav-link'}
           onClick={handleLinkClick}
         >
+          Jobs
           <span className="mobile-link-icon">🏠</span>
-          Home
+          
         </NavLink>
         <NavLink
           to="/recuirter-profile"
