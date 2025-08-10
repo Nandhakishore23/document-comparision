@@ -336,8 +336,9 @@ function RecruiterLayout({ active, children }) {
           className={({ isActive }) => isActive || active === 'recruiter' ? 'mobile-nav-link active' : 'mobile-nav-link'}
           onClick={handleLinkClick}
         >
-          Jobs
+        
           <span className="mobile-link-icon">🏠</span>
+          Jobs
           
         </NavLink>
         <NavLink
