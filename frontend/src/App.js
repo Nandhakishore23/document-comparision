@@ -10,12 +10,12 @@ import Postjob from './components/Postjob';
 import RecruiterProfile from './components/RecuirterProfile';
 import Profile from './components/Profile';
 import Status from './components/Status';
-import ChatBot from './components/Chatbot';
+import Home from './components/Home';
 
 function App() {
   return (
     <Router>
-      <Navbar />
+      {/* <Navbar /> */}
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
@@ -26,6 +26,15 @@ function App() {
             // eslint-disable-next-line react/jsx-no-undef
             <PrivateRoute>
               <ARDashboard />
+            </PrivateRoute>
+          } 
+        />
+        <Route 
+          path="/home" 
+          element={
+            // eslint-disable-next-line react/jsx-no-undef
+            <PrivateRoute>
+              <Home />
             </PrivateRoute>
           } 
         />
@@ -68,7 +77,7 @@ function App() {
         />
         
       </Routes> 
-      <ChatBot />
+      
     </Router>
   );
 }

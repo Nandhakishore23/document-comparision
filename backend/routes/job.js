@@ -79,6 +79,39 @@ router.get('/', async (req, res) => {
 //   }
 // });
 
+// router.put('/:jobId/close', async (req, res) => {
+//   try {
+//     const { jobId } = req.params;
+
+//     // Mark job as closed
+//     const job = await Job.findByIdAndUpdate(jobId, { isClosed: true }, { new: true });
+//     if (!job) return res.status(404).json({ success: false, error: 'Job not found' });
+
+//     // Find all pending applications
+//     const pendingApplications = await Application.find({
+//       jobId,
+//       'result.status': { $ne: 'Approved', $ne: 'Rejected' },
+//     });
+
+//     // Reject each and send email
+//     for (const app of pendingApplications) {
+//       app.result.status = 'Rejected';
+//       await app.save();
+
+//       await transporter.sendMail({
+//         from: 'mpayyappan2004@gmail.com',
+//         to: app.email,
+//         subject: `Update on Your Application for ${job.title}`,
+//         text: `Dear ${app.candidateName},\n\nThank you for applying to ${job.title}. Unfortunately, this position has been closed and we are unable to proceed with your application.\n\nWe appreciate your interest and encourage you to apply for future opportunities.\n\nBest regards,\nRecruitment Team`,
+//       });
+//     }
+
+//     res.json({ success: true, message: 'Job closed and pending applications rejected.' });
+//   } catch (error) {
+//     console.error('Error closing job:', error);
+//     res.status(500).json({ success: false, error: 'Server error' });
+//   }
+// });
 router.put('/:jobId/close', async (req, res) => {
   try {
     const { jobId } = req.params;
@@ -87,13 +120,13 @@ router.put('/:jobId/close', async (req, res) => {
     const job = await Job.findByIdAndUpdate(jobId, { isClosed: true }, { new: true });
     if (!job) return res.status(404).json({ success: false, error: 'Job not found' });
 
-    // Find all pending applications
+    // Get only pending applications
     const pendingApplications = await Application.find({
       jobId,
-      'result.status': { $ne: 'Approved', $ne: 'Rejected' },
+      'result.status': { $nin: ['Approved', 'Rejected'] }
     });
 
-    // Reject each and send email
+    // Reject each pending applicant
     for (const app of pendingApplications) {
       app.result.status = 'Rejected';
       await app.save();
@@ -112,5 +145,6 @@ router.put('/:jobId/close', async (req, res) => {
     res.status(500).json({ success: false, error: 'Server error' });
   }
 });
+
 
 module.exports = router;
