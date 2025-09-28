@@ -25,7 +25,7 @@
 
 // //     try {
 // //       setLoading(true);
-// //       const response = await fetch('http://localhost:5000/api/User/login', {
+// //       const response = await fetch('https://document-comparision-ai0x.onrender.com/api/User/login', {
 // //         method: 'POST',
 // //         headers: {
 // //           'Content-Type': 'application/json',
@@ -141,7 +141,7 @@
 
 //     try {
 //       setLoading(true);
-//       const response = await fetch('http://localhost:5000/api/User/login', {
+//       const response = await fetch('https://document-comparision-ai0x.onrender.com/api/User/login', {
 //         method: 'POST',
 //         headers: {
 //           'Content-Type': 'application/json',
@@ -267,7 +267,7 @@
 
 //     try {
 //       setLoading(true);
-//       const response = await fetch('http://localhost:5000/api/User/login', {
+//       const response = await fetch('https://document-comparision-ai0x.onrender.com/api/User/login', {
 //         method: 'POST',
 //         headers: {
 //           'Content-Type': 'application/json',
@@ -383,7 +383,7 @@ function Login() {
 
     try {
       setLoading(true);
-      const response = await fetch('http://localhost:5000/api/User/login', {
+      const response = await fetch('https://document-comparision-ai0x.onrender.com/api/User/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

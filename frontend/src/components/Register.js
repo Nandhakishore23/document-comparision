@@ -45,7 +45,7 @@
 // //     };
 // //     try {
 // //       setLoading(true);
-// //       const response = await fetch('http://localhost:5000/api/User', {
+// //       const response = await fetch('https://document-comparision-ai0x.onrender.com/api/User', {
 // //         method: 'POST',
 // //         headers: {
 // //           'Content-Type': 'application/json',
@@ -215,7 +215,7 @@
 
 //     try {
 //       setLoading(true);
-//       const response = await fetch('http://localhost:5000/api/User', {
+//       const response = await fetch('https://document-comparision-ai0x.onrender.com/api/User', {
 //         method: 'POST',
 //         headers: {
 //           'Content-Type': 'application/json',
@@ -370,7 +370,7 @@
 //     };
 //     try {
 //       setLoading(true);
-//       const response = await fetch('http://localhost:5000/api/User', {
+//       const response = await fetch('https://document-comparision-ai0x.onrender.com/api/User', {
 //         method: 'POST',
 //         headers: {
 //           'Content-Type': 'application/json',
@@ -540,7 +540,7 @@ function Register() {
 
     try {
       setLoading(true);
-      const response = await fetch('http://localhost:5000/api/User', {
+      const response = await fetch('https://document-comparision-ai0x.onrender.com/api/User', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

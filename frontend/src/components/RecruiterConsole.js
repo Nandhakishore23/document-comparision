@@ -11,7 +11,7 @@
 // // // // // //   useEffect(() => {
 // // // // // //     const fetchJobs = async () => {
 // // // // // //       try {
-// // // // // //         const res = await fetch('http://localhost:5000/api/jobs');
+// // // // // //         const res = await fetch('https://document-comparision-ai0x.onrender.com//api/jobs');
 // // // // // //         if (res.ok) {
 // // // // // //           const data = await res.json();
 // // // // // //           setJobs(data.jobs || []);
@@ -84,7 +84,7 @@
 // // // // // //   useEffect(() => {
 // // // // // //     const fetchJobs = async () => {
 // // // // // //       try {
-// // // // // //         const res = await fetch('http://localhost:5000/api/jobs');
+// // // // // //         const res = await fetch('https://document-comparision-ai0x.onrender.com//api/jobs');
 // // // // // //         const data = await res.json();
 // // // // // //         setJobs(data.jobs || []);
 // // // // // //       } catch (err) {
@@ -99,7 +99,7 @@
 
 // // // // // //   const updateStatus = async (applicationId, status) => {
 // // // // // //   try {
-// // // // // //     const res = await fetch(`http://localhost:5000/api/applications/${applicationId}/status`, {
+// // // // // //     const res = await fetch(`https://document-comparision-ai0x.onrender.com//api/applications/${applicationId}/status`, {
 // // // // // //       method: 'PUT',
 // // // // // //       headers: {
 // // // // // //         'Content-Type': 'application/json',
@@ -124,7 +124,7 @@
 
 // // // // // //   const fetchApplicants = async (jobId) => {
 // // // // // //     setSelectedJobId(jobId);
-// // // // // //     const res = await fetch(`http://localhost:5000/api/applications/${jobId}`);
+// // // // // //     const res = await fetch(`https://document-comparision-ai0x.onrender.com//api/applications/${jobId}`);
 // // // // // //     const data = await res.json();
 // // // // // //     setApplicants(data.applications);
 // // // // // //   };
@@ -240,7 +240,7 @@
 // // // // //   useEffect(() => {
 // // // // //     const fetchJobs = async () => {
 // // // // //       try {
-// // // // //         const res = await fetch('http://localhost:5000/api/jobs');
+// // // // //         const res = await fetch('https://document-comparision-ai0x.onrender.com//api/jobs');
 // // // // //         const data = await res.json();
 // // // // //         setJobs(data.jobs || []);
 // // // // //       } catch (err) {
@@ -255,7 +255,7 @@
 
 // // // // //   const updateStatus = async (applicationId, status) => {
 // // // // //     try {
-// // // // //       const res = await fetch(`http://localhost:5000/api/applications/${applicationId}/status`, {
+// // // // //       const res = await fetch(`https://document-comparision-ai0x.onrender.com//api/applications/${applicationId}/status`, {
 // // // // //         method: 'PUT',
 // // // // //         headers: {
 // // // // //           'Content-Type': 'application/json',
@@ -284,7 +284,7 @@
 // // // // //     setShowModal(true);
     
 // // // // //     try {
-// // // // //       const res = await fetch(`http://localhost:5000/api/applications/${jobId}`);
+// // // // //       const res = await fetch(`https://document-comparision-ai0x.onrender.com//api/applications/${jobId}`);
 // // // // //       const data = await res.json();
 // // // // //       setApplicants(data.applications || []);
 // // // // //     } catch (err) {
@@ -297,7 +297,7 @@
 
 // // // // //   const downloadApplicantsPDF = async (jobId, jobTitle) => {
 // // // // //     try {
-// // // // //       const res = await fetch(`http://localhost:5000/api/applications/${jobId}/pdf`, {
+// // // // //       const res = await fetch(`https://document-comparision-ai0x.onrender.com//api/applications/${jobId}/pdf`, {
 // // // // //   method: 'GET',
 // // // // // });
 
@@ -535,7 +535,7 @@
 // // // //   useEffect(() => {
 // // // //     const fetchJobs = async () => {
 // // // //       try {
-// // // //         const res = await fetch('http://localhost:5000/api/jobs');
+// // // //         const res = await fetch('https://document-comparision-ai0x.onrender.com//api/jobs');
 // // // //         const data = await res.json();
 // // // //         setJobs(data.jobs || []);
 // // // //       } catch (err) {
@@ -550,7 +550,7 @@
 
 // // // //   const updateStatus = async (applicationId, status) => {
 // // // //     try {
-// // // //       const res = await fetch(`http://localhost:5000/api/applications/${applicationId}/status`, {
+// // // //       const res = await fetch(`https://document-comparision-ai0x.onrender.com//api/applications/${applicationId}/status`, {
 // // // //         method: 'PUT',
 // // // //         headers: {
 // // // //           'Content-Type': 'application/json',
@@ -578,7 +578,7 @@
 // // // //     setShowModal(true);
 
 // // // //     try {
-// // // //       const res = await fetch(`http://localhost:5000/api/applications/${jobId}`);
+// // // //       const res = await fetch(`https://document-comparision-ai0x.onrender.com//api/applications/${jobId}`);
 // // // //       const data = await res.json();
 // // // //       setApplicants(data.applications || []);
 // // // //     } catch (err) {
@@ -594,7 +594,7 @@
 // // // //   if (!confirm) return;
 
 // // // //   try {
-// // // //     const res = await fetch(`http://localhost:5000/api/jobs/${jobId}/close`, {
+// // // //     const res = await fetch(`https://document-comparision-ai0x.onrender.com//api/jobs/${jobId}/close`, {
 // // // //       method: 'PUT',
 // // // //     });
 
@@ -603,7 +603,7 @@
 // // // //     if (res.ok && data.success) {
 // // // //       alert('Job closed and pending applicants rejected.');
 // // // //       // Refresh jobs list
-// // // //       const updatedJobs = await fetch('http://localhost:5000/api/jobs');
+// // // //       const updatedJobs = await fetch('https://document-comparision-ai0x.onrender.com//api/jobs');
 // // // //       const updatedData = await updatedJobs.json();
 // // // //       setJobs(updatedData.jobs || []);
 // // // //     } else {
@@ -618,7 +618,7 @@
 
 // // // //   const downloadApplicantsPDF = async (jobId, jobTitle) => {
 // // // //     try {
-// // // //       const res = await fetch(`http://localhost:5000/api/applications/${jobId}/pdf`, {
+// // // //       const res = await fetch(`https://document-comparision-ai0x.onrender.com//api/applications/${jobId}/pdf`, {
 // // // //         method: 'GET',
 // // // //       });
 
@@ -825,7 +825,7 @@
 // // //   useEffect(() => {
 // // //     const fetchJobs = async () => {
 // // //       try {
-// // //         const res = await fetch('http://localhost:5000/api/jobs');
+// // //         const res = await fetch('https://document-comparision-ai0x.onrender.com//api/jobs');
 // // //         const data = await res.json();
 // // //         setJobs(data.jobs || []);
 // // //       } catch (err) {
@@ -840,7 +840,7 @@
 
 // // //   const updateStatus = async (applicationId, status) => {
 // // //     try {
-// // //       const res = await fetch(`http://localhost:5000/api/applications/${applicationId}/status`, {
+// // //       const res = await fetch(`https://document-comparision-ai0x.onrender.com//api/applications/${applicationId}/status`, {
 // // //         method: 'PUT',
 // // //         headers: {
 // // //           'Content-Type': 'application/json',
@@ -866,7 +866,7 @@
 // // //     if (!confirmClose) return;
 
 // // //     try {
-// // //       const res = await fetch(`http://localhost:5000/api/jobs/${jobId}/close`, {
+// // //       const res = await fetch(`https://document-comparision-ai0x.onrender.com//api/jobs/${jobId}/close`, {
 // // //         method: 'PUT'
 // // //       });
 
@@ -897,7 +897,7 @@
 // // //     setShowModal(true);
 
 // // //     try {
-// // //       const res = await fetch(`http://localhost:5000/api/applications/${jobId}`);
+// // //       const res = await fetch(`https://document-comparision-ai0x.onrender.com//api/applications/${jobId}`);
 // // //       const data = await res.json();
 // // //       setApplicants(data.applications || []);
 // // //     } catch (err) {
@@ -910,7 +910,7 @@
 
 // // //   const downloadApplicantsPDF = async (jobId, jobTitle) => {
 // // //     try {
-// // //       const res = await fetch(`http://localhost:5000/api/applications/${jobId}/pdf`, {
+// // //       const res = await fetch(`https://document-comparision-ai0x.onrender.com//api/applications/${jobId}/pdf`, {
 // // //         method: 'GET'
 // // //       });
 
@@ -1112,7 +1112,7 @@
 // //   useEffect(() => {
 // //     const fetchJobsWithCounts = async () => {
 // //       try {
-// //         const res = await fetch('http://localhost:5000/api/jobs');
+// //         const res = await fetch('https://document-comparision-ai0x.onrender.com//api/jobs');
 // //         const data = await res.json();
 // //         const jobsData = data.jobs || [];
 // //         setJobs(jobsData);
@@ -1122,7 +1122,7 @@
 // //         await Promise.all(
 // //           jobsData.map(async (job) => {
 // //             try {
-// //               const applicantRes = await fetch(`http://localhost:5000/api/applications/${job._id}`);
+// //               const applicantRes = await fetch(`https://document-comparision-ai0x.onrender.com//api/applications/${job._id}`);
 // //               const applicantData = await applicantRes.json();
 // //               counts[job._id] = applicantData.applications?.length || 0;
 // //             } catch (err) {
@@ -1144,7 +1144,7 @@
 
 // //   const updateStatus = async (applicationId, status) => {
 // //     try {
-// //       const res = await fetch(`http://localhost:5000/api/applications/${applicationId}/status`, {
+// //       const res = await fetch(`https://document-comparision-ai0x.onrender.com//api/applications/${applicationId}/status`, {
 // //         method: 'PUT',
 // //         headers: {
 // //           'Content-Type': 'application/json',
@@ -1170,7 +1170,7 @@
 // //     if (!confirmClose) return;
 
 // //     try {
-// //       const res = await fetch(`http://localhost:5000/api/jobs/${jobId}/close`, {
+// //       const res = await fetch(`https://document-comparision-ai0x.onrender.com//api/jobs/${jobId}/close`, {
 // //         method: 'PUT'
 // //       });
 
@@ -1199,7 +1199,7 @@
 // //     setShowModal(true);
 
 // //     try {
-// //       const res = await fetch(`http://localhost:5000/api/applications/${jobId}`);
+// //       const res = await fetch(`https://document-comparision-ai0x.onrender.com//api/applications/${jobId}`);
 // //       const data = await res.json();
 // //       setApplicants(data.applications || []);
 // //     } catch (err) {
@@ -1212,7 +1212,7 @@
 
 // //   const downloadApplicantsPDF = async (jobId, jobTitle) => {
 // //     try {
-// //       const res = await fetch(`http://localhost:5000/api/applications/${jobId}/pdf`, {
+// //       const res = await fetch(`https://document-comparision-ai0x.onrender.com//api/applications/${jobId}/pdf`, {
 // //         method: 'GET'
 // //       });
 
@@ -1245,7 +1245,7 @@
 
 // //     try {
 // //       // Create full URL for the resume
-// //       const fullResumeUrl = `http://localhost:5000${resumeUrl}`;
+// //       const fullResumeUrl = `https://document-comparision-ai0x.onrender.com/${resumeUrl}`;
       
 // //       // Open resume in new tab
 // //       window.open(fullResumeUrl, '_blank');
@@ -1263,7 +1263,7 @@
 // //     }
 
 // //     try {
-// //       const fullResumeUrl = `http://localhost:5000${resumeUrl}`;
+// //       const fullResumeUrl = `https://document-comparision-ai0x.onrender.com/${resumeUrl}`;
 // //       const response = await fetch(fullResumeUrl);
       
 // //       if (!response.ok) {
@@ -1510,7 +1510,7 @@
 //   useEffect(() => {
 //     const fetchJobsWithCounts = async () => {
 //       try {
-//         const res = await fetch('http://localhost:5000/api/jobs');
+//         const res = await fetch('https://document-comparision-ai0x.onrender.com//api/jobs');
 //         const data = await res.json();
 //         const jobsData = data.jobs || [];
 //         setJobs(jobsData);
@@ -1519,7 +1519,7 @@
 //         await Promise.all(
 //           jobsData.map(async (job) => {
 //             try {
-//               const applicantRes = await fetch(`http://localhost:5000/api/applications/${job._id}`);
+//               const applicantRes = await fetch(`https://document-comparision-ai0x.onrender.com//api/applications/${job._id}`);
 //               const applicantData = await applicantRes.json();
 //               counts[job._id] = applicantData.applications?.length || 0;
 //             } catch (err) {
@@ -1541,7 +1541,7 @@
 
 //   const updateStatus = async (applicationId, status) => {
 //     try {
-//       const res = await fetch(`http://localhost:5000/api/applications/${applicationId}/status`, {
+//       const res = await fetch(`https://document-comparision-ai0x.onrender.com//api/applications/${applicationId}/status`, {
 //         method: 'PUT',
 //         headers: {
 //           'Content-Type': 'application/json',
@@ -1566,7 +1566,7 @@
 //   const updateBulkStatus = async (applicationIds, status) => {
 //     setBulkActionLoading(true);
 //     try {
-//       const res = await fetch('http://localhost:5000/api/applications/bulk-status', {
+//       const res = await fetch('https://document-comparision-ai0x.onrender.com//api/applications/bulk-status', {
 //         method: 'PUT',
 //         headers: {
 //           'Content-Type': 'application/json',
@@ -1597,7 +1597,7 @@
 //     if (!confirmClose) return;
 
 //     try {
-//       const res = await fetch(`http://localhost:5000/api/jobs/${jobId}/close`, {
+//       const res = await fetch(`https://document-comparision-ai0x.onrender.com//api/jobs/${jobId}/close`, {
 //         method: 'PUT'
 //       });
 
@@ -1629,7 +1629,7 @@
 //     setSelectByNumber('');
 
 //     try {
-//       const res = await fetch(`http://localhost:5000/api/applications/${jobId}`);
+//       const res = await fetch(`https://document-comparision-ai0x.onrender.com//api/applications/${jobId}`);
 //       const data = await res.json();
 //       setApplicants(data.applications || []);
 //     } catch (err) {
@@ -1642,7 +1642,7 @@
 
 //   const downloadApplicantsPDF = async (jobId, jobTitle) => {
 //     try {
-//       const res = await fetch(`http://localhost:5000/api/applications/${jobId}/pdf`, {
+//       const res = await fetch(`https://document-comparision-ai0x.onrender.com//api/applications/${jobId}/pdf`, {
 //         method: 'GET'
 //       });
 
@@ -1673,7 +1673,7 @@
 //     }
 
 //     try {
-//       const fullResumeUrl = `http://localhost:5000${resumeUrl}`;
+//       const fullResumeUrl = `https://document-comparision-ai0x.onrender.com/${resumeUrl}`;
 //       window.open(fullResumeUrl, '_blank');
 //     } catch (err) {
 //       console.error('Error opening resume:', err);
@@ -1688,7 +1688,7 @@
 //     }
 
 //     try {
-//       const fullResumeUrl = `http://localhost:5000${resumeUrl}`;
+//       const fullResumeUrl = `https://document-comparision-ai0x.onrender.com/${resumeUrl}`;
 //       const response = await fetch(fullResumeUrl);
       
 //       if (!response.ok) {
@@ -2117,7 +2117,7 @@ const RecruiterConsole = () => {
   useEffect(() => {
     const fetchJobsWithCounts = async () => {
       try {
-        const res = await fetch('http://localhost:5000/api/jobs');
+        const res = await fetch('https://document-comparision-ai0x.onrender.com/api/jobs');
         const data = await res.json();
         const jobsData = data.jobs || [];
         setJobs(jobsData);
@@ -2126,7 +2126,7 @@ const RecruiterConsole = () => {
         await Promise.all(
           jobsData.map(async (job) => {
             try {
-              const applicantRes = await fetch(`http://localhost:5000/api/applications/${job._id}`);
+              const applicantRes = await fetch(`https://document-comparision-ai0x.onrender.com/api/applications/${job._id}`);
               const applicantData = await applicantRes.json();
               counts[job._id] = applicantData.applications?.length || 0;
             } catch (err) {
@@ -2248,7 +2248,7 @@ const RecruiterConsole = () => {
 
   const updateStatus = async (applicationId, status) => {
     try {
-      const res = await fetch(`http://localhost:5000/api/applications/${applicationId}/status`, {
+      const res = await fetch(`https://document-comparision-ai0x.onrender.com/api/applications/${applicationId}/status`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -2273,7 +2273,7 @@ const RecruiterConsole = () => {
   const updateBulkStatus = async (applicationIds, status) => {
     setBulkActionLoading(true);
     try {
-      const res = await fetch('http://localhost:5000/api/applications/bulk-status', {
+      const res = await fetch('https://document-comparision-ai0x.onrender.com/api/applications/bulk-status', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -2304,7 +2304,7 @@ const RecruiterConsole = () => {
     if (!confirmClose) return;
 
     try {
-      const res = await fetch(`http://localhost:5000/api/jobs/${jobId}/close`, {
+      const res = await fetch(`https://document-comparision-ai0x.onrender.com/api/jobs/${jobId}/close`, {
         method: 'PUT'
       });
 
@@ -2336,7 +2336,7 @@ const RecruiterConsole = () => {
     setSelectByNumber('');
 
     try {
-      const res = await fetch(`http://localhost:5000/api/applications/${jobId}`);
+      const res = await fetch(`https://document-comparision-ai0x.onrender.com/api/applications/${jobId}`);
       const data = await res.json();
       setApplicants(data.applications || []);
     } catch (err) {
@@ -2349,7 +2349,7 @@ const RecruiterConsole = () => {
 
   const downloadApplicantsPDF = async (jobId, jobTitle) => {
     try {
-      const res = await fetch(`http://localhost:5000/api/applications/${jobId}/pdf`, {
+      const res = await fetch(`https://document-comparision-ai0x.onrender.com/api/applications/${jobId}/pdf`, {
         method: 'GET'
       });
 
@@ -2380,7 +2380,7 @@ const RecruiterConsole = () => {
     }
 
     try {
-      const fullResumeUrl = `http://localhost:5000${resumeUrl}`;
+      const fullResumeUrl = `https://document-comparision-ai0x.onrender.com/${resumeUrl}`;
       window.open(fullResumeUrl, '_blank');
     } catch (err) {
       console.error('Error opening resume:', err);
@@ -2395,7 +2395,7 @@ const RecruiterConsole = () => {
     }
 
     try {
-      const fullResumeUrl = `http://localhost:5000${resumeUrl}`;
+      const fullResumeUrl = `https://document-comparision-ai0x.onrender.com/${resumeUrl}`;
       const response = await fetch(fullResumeUrl);
       
       if (!response.ok) {

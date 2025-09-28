@@ -10,7 +10,7 @@
 // //   useEffect(() => {
 // //     const fetchJobs = async () => {
 // //       try {
-// //         const res = await fetch('http://localhost:5000/api/jobs');
+// //         const res = await fetch('https://document-comparision-ai0x.onrender.com/api/jobs');
 // //         if (!res.ok) {
 // //           throw new Error('Failed to fetch jobs');
 // //         }
@@ -92,7 +92,7 @@
 
 // //     if (res.ok) {
 // //       // Save to MongoDB
-// //       const saveRes = await fetch('http://localhost:5000/api/applications', {
+// //       const saveRes = await fetch('https://document-comparision-ai0x.onrender.com/api/applications', {
 // //         method: 'POST',
 // //         headers: { 'Content-Type': 'application/json' },
 // //         body: JSON.stringify({
@@ -191,7 +191,7 @@
 // //   useEffect(() => {
 // //     const fetchJobs = async () => {
 // //       try {
-// //         const response = await fetch('http://localhost:5000/api/jobs');
+// //         const response = await fetch('https://document-comparision-ai0x.onrender.com/api/jobs');
 // //         const data = await response.json();
 // //         console.log('Fetched jobs:', data);
 
@@ -254,7 +254,7 @@
 
 // //       if (res.ok) {
 // //         // Save application in MongoDB
-// //         const saveRes = await fetch('http://localhost:5000/api/applications', {
+// //         const saveRes = await fetch('https://document-comparision-ai0x.onrender.com/api/applications', {
 // //   method: 'POST',
 // //   headers: { 'Content-Type': 'application/json' },
 // //   body: JSON.stringify({
@@ -348,7 +348,7 @@
 //   // useEffect(() => {
 //   //   const fetchJobs = async () => {
 //   //     try {
-//   //       const response = await fetch('http://localhost:5000/api/jobs');
+//   //       const response = await fetch('https://document-comparision-ai0x.onrender.com/api/jobs');
 //   //       const data = await response.json();
 //   //       console.log('Fetched jobs:', data);
 
@@ -371,7 +371,7 @@
 // useEffect(() => {
 //   const fetchJobs = async () => {
 //     try {
-//       const response = await fetch('http://localhost:5000/api/jobs');
+//       const response = await fetch('https://document-comparision-ai0x.onrender.com/api/jobs');
 //       const data = await response.json();
 //       console.log('Fetched jobs:', data);
 
@@ -428,7 +428,7 @@
 //   }
 
 //   try {
-//     const res = await fetch(`http://localhost:5000/api/resumes/${user._id}`);
+//     const res = await fetch(`https://document-comparision-ai0x.onrender.com/api/resumes/${user._id}`);
 //     const data = await res.json();
 
 //     if (res.ok && data.length > 0) {
@@ -477,7 +477,7 @@
 
 // //       if (res.ok) {
 // //         // Save application in MongoDB
-// //         const saveRes = await fetch('http://localhost:5000/api/applications', {
+// //         const saveRes = await fetch('https://document-comparision-ai0x.onrender.com/api/applications', {
 // //           method: 'POST',
 // //           headers: { 'Content-Type': 'application/json' },
 // //           body: JSON.stringify({
@@ -531,7 +531,7 @@
 //       formData.append('resume', resume);
 //     } else {
 //       // Fetch the existing resume blob from backend
-//       const response = await fetch(`http://localhost:5000/api/resumes/download/${existingResume._id}`);
+//       const response = await fetch(`https://document-comparision-ai0x.onrender.com/api/resumes/download/${existingResume._id}`);
 //       const blob = await response.blob();
 //       const file = new File([blob], existingResume.filename, { type: existingResume.contentType });
 //       formData.append('resume', file);
@@ -557,7 +557,7 @@
 
 //     if (res.ok) {
 //       // Save application in MongoDB
-//       const saveRes = await fetch('http://localhost:5000/api/applications', {
+//       const saveRes = await fetch('https://document-comparision-ai0x.onrender.com/api/applications', {
 //         method: 'POST',
 //         headers: { 'Content-Type': 'application/json' },
 //         body: JSON.stringify({
@@ -814,7 +814,7 @@
 //   useEffect(() => {
 //     const fetchJobs = async () => {
 //       try {
-//         const response = await fetch('http://localhost:5000/api/jobs');
+//         const response = await fetch('https://document-comparision-ai0x.onrender.com/api/jobs');
 //         const data = await response.json();
 //         console.log('Fetched jobs:', data);
 
@@ -845,7 +845,7 @@
 //   const checkUserResumes = async (userId) => {
 //     setIsLoadingResumes(true);
 //     try {
-//       const response = await fetch(`http://localhost:5000/api/resumes/${userId}`);
+//       const response = await fetch(`https://document-comparision-ai0x.onrender.com/api/resumes/${userId}`);
 //       const data = await response.json();
       
 //       if (response.ok) {
@@ -930,7 +930,7 @@
       
 //       if (useExistingResume) {
 //         // Get the existing resume data
-//         const resumeResponse = await fetch(`http://localhost:5000/api/resumes/download/${selectedResumeId}`);
+//         const resumeResponse = await fetch(`https://document-comparision-ai0x.onrender.com/api/resumes/download/${selectedResumeId}`);
 //         if (!resumeResponse.ok) {
 //           throw new Error('Failed to fetch existing resume');
 //         }
@@ -963,7 +963,7 @@
 
 //       if (res.ok) {
 //         // Save application in MongoDB
-//         const saveRes = await fetch('http://localhost:5000/api/applications', {
+//         const saveRes = await fetch('https://document-comparision-ai0x.onrender.com/api/applications', {
 //           method: 'POST',
 //           headers: { 'Content-Type': 'application/json' },
 //           body: JSON.stringify({
@@ -1240,7 +1240,7 @@ const ARDashboard = () => {
   useEffect(() => {
     const fetchJobs = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/jobs');
+        const response = await fetch('https://document-comparision-ai0x.onrender.com/api/jobs');
         const data = await response.json();
         console.log('Fetched jobs:', data);
 
@@ -1346,7 +1346,7 @@ const ARDashboard = () => {
   const checkUserResumes = async (userId) => {
     setIsLoadingResumes(true);
     try {
-      const response = await fetch(`http://localhost:5000/api/resumes/${userId}`);
+      const response = await fetch(`https://document-comparision-ai0x.onrender.com/api/resumes/${userId}`);
       const data = await response.json();
       
       if (response.ok) {
@@ -1431,7 +1431,7 @@ const ARDashboard = () => {
       
       if (useExistingResume) {
         // Get the existing resume data
-        const resumeResponse = await fetch(`http://localhost:5000/api/resumes/download/${selectedResumeId}`);
+        const resumeResponse = await fetch(`https://document-comparision-ai0x.onrender.com/api/resumes/download/${selectedResumeId}`);
         if (!resumeResponse.ok) {
           throw new Error('Failed to fetch existing resume');
         }
@@ -1464,7 +1464,7 @@ const ARDashboard = () => {
 
       if (res.ok) {
         // Save application in MongoDB
-        const saveRes = await fetch('http://localhost:5000/api/applications', {
+        const saveRes = await fetch('https://document-comparision-ai0x.onrender.com/api/applications', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({

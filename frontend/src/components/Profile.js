@@ -9,7 +9,7 @@
 //     const fetchProfile = async () => {
 //       try {
 //         // Replace with actual recruiter ID or authentication logic as needed
-//         const res = await fetch('http://localhost:5000/api/User/ar-profile?role=AR%20Requestor');
+//         const res = await fetch('https://document-comparision-ai0x.onrender.com/api/User/ar-profile?role=AR%20Requestor');
 //         if (res.ok) {
 //           const data = await res.json();
 //           setProfile(data.user);
@@ -67,8 +67,8 @@
 //   useEffect(() => {
 //     const fetchProfile = async () => {
 //       try {
-//         //const res = await fetch(`http://localhost:5000/api/User/ar-profile?role=AR%20Requestor`);
-//         const res = await fetch(`http://localhost:5000/api/User/ar-profile?email=${user.email}`);
+//         //const res = await fetch(`https://document-comparision-ai0x.onrender.com/api/User/ar-profile?role=AR%20Requestor`);
+//         const res = await fetch(`https://document-comparision-ai0x.onrender.com/api/User/ar-profile?email=${user.email}`);
 
 //         const data = await res.json();
 //         setProfile(data.user);
@@ -80,7 +80,7 @@
 //     };
 
 //     const fetchResumes = async () => {
-//       const res = await fetch(`http://localhost:5000/api/resumes/${userId}`);
+//       const res = await fetch(`https://document-comparision-ai0x.onrender.com/api/resumes/${userId}`);
 //       const data = await res.json();
 //       setResumes(data);
 //     };
@@ -95,7 +95,7 @@
 //     formData.append('resume', resumeFile);
 //     formData.append('userId', userId);
 
-//     const res = await fetch('http://localhost:5000/api/resumes/upload', {
+//     const res = await fetch('https://document-comparision-ai0x.onrender.com/api/resumes/upload', {
 //       method: 'POST',
 //       body: formData,
 //     });
@@ -107,7 +107,7 @@
 //   };
 
 //   const handleDelete = async (resumeId) => {
-//     await fetch(`http://localhost:5000/api/resumes/${resumeId}`, {
+//     await fetch(`https://document-comparision-ai0x.onrender.com/api/resumes/${resumeId}`, {
 //       method: 'DELETE',
 //     });
 //     window.location.reload();
@@ -137,7 +137,7 @@
 //         {resumes.map((resume) => (
 //           <li key={resume._id}>
 //             {resume.filename}{' '}
-//             <a href={`http://localhost:5000/api/resumes/download/${resume._id}`} target="_blank" rel="noreferrer">
+//             <a href={`https://document-comparision-ai0x.onrender.com/api/resumes/download/${resume._id}`} target="_blank" rel="noreferrer">
 //               Download
 //             </a>{' '}
 //             <button onClick={() => handleDelete(resume._id)}>Delete</button>
@@ -170,7 +170,7 @@ const Profile = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/api/User/ar-profile?email=${user.email}`);
+        const res = await fetch(`https://document-comparision-ai0x.onrender.com/api/User/ar-profile?email=${user.email}`);
         const data = await res.json();
         setProfile(data.user);
       } catch (err) {
@@ -182,7 +182,7 @@ const Profile = () => {
 
     const fetchResumes = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/api/resumes/${userId}`);
+        const res = await fetch(`https://document-comparision-ai0x.onrender.com/api/resumes/${userId}`);
         const data = await res.json();
         setResumes(data);
       } catch (err) {
@@ -205,7 +205,7 @@ const Profile = () => {
     formData.append('userId', userId);
 
     try {
-      const res = await fetch('http://localhost:5000/api/resumes/upload', {
+      const res = await fetch('https://document-comparision-ai0x.onrender.com/api/resumes/upload', {
         method: 'POST',
         body: formData,
       });
@@ -214,7 +214,7 @@ const Profile = () => {
         alert('Resume uploaded successfully!');
         setResumeFile(null);
         // Refresh resumes list
-        const resumesRes = await fetch(`http://localhost:5000/api/resumes/${userId}`);
+        const resumesRes = await fetch(`https://document-comparision-ai0x.onrender.com/api/resumes/${userId}`);
         const resumesData = await resumesRes.json();
         setResumes(resumesData);
       } else {
@@ -233,7 +233,7 @@ const Profile = () => {
           method: 'DELETE',
         });
         // Refresh resumes list
-        const resumesRes = await fetch(`http://localhost:5000/api/resumes/${userId}`);
+        const resumesRes = await fetch(`https://document-comparision-ai0x.onrender.com/api/resumes/${userId}`);
         const resumesData = await resumesRes.json();
         setResumes(resumesData);
       } catch (err) {
@@ -290,7 +290,7 @@ const Profile = () => {
                   <span className="resume-filename">{resume.filename}</span>
                   <div className="resume-actions">
                     <a 
-                      href={`http://localhost:5000/api/resumes/download/${resume._id}`} 
+                      href={`https://document-comparision-ai0x.onrender.com/api/resumes/download/${resume._id}`} 
                       target="_blank" 
                       rel="noreferrer"
                       className="download-link"
