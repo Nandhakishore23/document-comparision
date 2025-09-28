@@ -160,6 +160,10 @@ app.use('/api/resumes', resumeRoutes);
 app.use('/api/applications', applicationRoutes);
 app.use('/api/apply', applyRoutes);
 
+app.get('/', (req, res) => {
+  res.send('API is running...');
+});
+
 const notificationRoutes = require('./routes/notifications');
 app.use('/api/notifications', notificationRoutes);
 
