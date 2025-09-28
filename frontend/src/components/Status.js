@@ -105,7 +105,7 @@ const Status = () => {
 
     const fetchApplications = async () => {
       try {
-        const res = await fetch(`https://document-comparision.onrender.com/api/applications/user/${userId}`);
+        const res = await fetch(`http://localhost:5000/api/applications/user/${userId}`);
         const data = await res.json();
 
         if (data.success) {

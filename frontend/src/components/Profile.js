@@ -170,7 +170,7 @@ const Profile = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const res = await fetch(`https://document-comparision.onrender.com/api/User/ar-profile?email=${user.email}`);
+        const res = await fetch(`http://localhost:5000/api/User/ar-profile?email=${user.email}`);
         const data = await res.json();
         setProfile(data.user);
       } catch (err) {
@@ -182,7 +182,7 @@ const Profile = () => {
 
     const fetchResumes = async () => {
       try {
-        const res = await fetch(`https://document-comparision.onrender.com/api/resumes/${userId}`);
+        const res = await fetch(`http://localhost:5000/api/resumes/${userId}`);
         const data = await res.json();
         setResumes(data);
       } catch (err) {
@@ -205,7 +205,7 @@ const Profile = () => {
     formData.append('userId', userId);
 
     try {
-      const res = await fetch('https://document-comparision.onrender.com/api/resumes/upload', {
+      const res = await fetch('http://localhost:5000/api/resumes/upload', {
         method: 'POST',
         body: formData,
       });
@@ -214,7 +214,7 @@ const Profile = () => {
         alert('Resume uploaded successfully!');
         setResumeFile(null);
         // Refresh resumes list
-        const resumesRes = await fetch(`https://document-comparision.onrender.com/api/resumes/${userId}`);
+        const resumesRes = await fetch(`http://localhost:5000/api/resumes/${userId}`);
         const resumesData = await resumesRes.json();
         setResumes(resumesData);
       } else {
@@ -233,7 +233,7 @@ const Profile = () => {
           method: 'DELETE',
         });
         // Refresh resumes list
-        const resumesRes = await fetch(`https://document-comparision.onrender.com/api/resumes/${userId}`);
+        const resumesRes = await fetch(`http://localhost:5000/api/resumes/${userId}`);
         const resumesData = await resumesRes.json();
         setResumes(resumesData);
       } catch (err) {

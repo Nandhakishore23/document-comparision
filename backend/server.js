@@ -116,11 +116,19 @@ app.use(express.json());
 // Add this line to serve static files from uploads directory
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-mongoose.connect('mongodb://mongo:sBDFlgIdujlhYFnooPxbxJJCVYZqAQTH@switchback.proxy.rlwy.net:15692', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-}).then(() => console.log('MongoDB connected'))
-  .catch(err => console.error('MongoDB connection error:', err));
+
+const dbconnect = async () => {
+  await mongoose.connect('mongodb+srv://officialnandhakishore_db_user:hv7hhyP2dCy1YmTq@genhire.tmbsxwm.mongodb.net/');
+  console.log("Connected to Database");
+}
+
+dbconnect()
+  .catch((err) => console.error(err))
+
+
+// mongoose.connect('mongodb://mongo:sBDFlgIdujlhYFnooPxbxJJCVYZqAQTH@switchback.proxy.rlwy.net:15692')
+  // .then(() => console.log('MongoDB connected'))
+  // .catch(err => console.error('MongoDB connection error:', err));
 
 // Seed default recruiter
 const seedDefaultRecruiter = async () => {

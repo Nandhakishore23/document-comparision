@@ -217,7 +217,7 @@ const RecruiterProfile = () => {
     const fetchProfile = async () => {
       try {
         // Replace with actual recruiter ID or authentication logic as needed
-        const res = await fetch('https://document-comparision.onrender.com/api/User/profile');
+        const res = await fetch('http://localhost:5000/api/User/profile');
         if (res.ok) {
           const data = await res.json();
           setProfile(data.user);
@@ -236,7 +236,7 @@ const RecruiterProfile = () => {
     const fetchRecruiterStats = async () => {
       try {
         // Fetch jobs count
-        const jobsRes = await fetch('https://document-comparision.onrender.com/api/jobs');
+        const jobsRes = await fetch('http://localhost:5000/api/jobs');
         const jobsData = await jobsRes.json();
         const jobsCount = jobsData.jobs ? jobsData.jobs.length : 0;
 
@@ -245,7 +245,7 @@ const RecruiterProfile = () => {
         if (jobsData.jobs && jobsData.jobs.length > 0) {
           const applicationPromises = jobsData.jobs.map(async (job) => {
             try {
-              const appRes = await fetch(`https://document-comparision.onrender.com/api/applications/${job._id}`);
+              const appRes = await fetch(`http://localhost:5000/api/applications/${job._id}`);
               const appData = await appRes.json();
               return appData.applications ? appData.applications.length : 0;
             } catch (err) {
