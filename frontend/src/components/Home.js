@@ -61,7 +61,7 @@ const Home = () => {
       {/* About Company */}
       <section className="about-section" id="about">
         <div className="container">
-          <h2 className="section-title">About Hexaware Technologies</h2>
+          <h2 className="section-title">About Genhire Technologies</h2>
           <div className="about-grid">
             <div 
               className={`about-card ${isVisible.about1 ? 'animate-in' : ''}`}
@@ -70,8 +70,8 @@ const Home = () => {
             >
               <h3>Who We Are</h3>
               <p>
-                Hexaware is a global technology and business process services company with 27,000+ 
-                Hexawarians across 40+ offices in 19 countries. We're dedicated to creating smiles 
+                genhire is a global technology and business process services company with 27,000+ 
+                Genhirites across 40+ offices in 19 countries. We're dedicated to creating smiles 
                 through the power of great people and technology.
               </p>
             </div>
@@ -109,7 +109,7 @@ const Home = () => {
           <div className="mission-content">
             <h2>Our Mission</h2>
             <p>
-              At Hexaware, solving your IT and business process challenges is our mission. We transform 
+              At genhire, solving your IT and business process challenges is our mission. We transform 
               how IT services are delivered by being competitive and proactive in providing software 
               solutions, continuously striving to exceed customer expectations through the power of 
               great people and technology.
