@@ -132,8 +132,8 @@ dbconnect()
 
 // Seed default recruiter
 const seedDefaultRecruiter = async () => {
-  const email = 'hexawarerecuirter@gmail.com';
-  const password = 'Hexa@2025';
+  const email = 'recruit@gmail.com';
+  const password = '123456';
   const role = 'Recruiter';
   const name = 'Hexaware Recruiter';
 
