@@ -69,29 +69,29 @@ const upload = multer({ storage });
 // router.post('/', async (req, res) => {
 //   try {
 //     const { userId, candidateName, email, jobId, result } = req.body;
-    
+
 //     console.log('Full request body:', JSON.stringify(req.body, null, 2));
 //     console.log('Result structure:', result);
-    
+
 //     // Handle the actual data structure - result is an array with stringified JSON
 //     let resultData;
-    
+
 //     if (result && Array.isArray(result) && result.length > 0) {
 //       // First parse the stringified JSON in the array
 //       const parsedResult = JSON.parse(result[0]);
 //       // Then access the output from the parsed object
 //       resultData = parsedResult[0]?.output;
 //     }
-    
+
 //     console.log('Extracted resultData:', resultData);
-    
+
 //     if (!resultData) {
 //       return res.status(400).json({ error: 'No output from AI.' });
 //     }
 
 //     // Extract JSON from markdown code block
 //     const jsonMatch = resultData.match(/```json\s*([\s\S]*?)\s*```/);
-    
+
 //     if (!jsonMatch || !jsonMatch[1]) {
 //       return res.status(400).json({ error: 'AI output does not contain valid JSON format.' });
 //     }
@@ -111,7 +111,7 @@ const upload = multer({ storage });
 //     }
 
 //     const matchResult = parsedData[0];
-    
+
 //     // Validate that match field exists
 //     if (!matchResult || !matchResult.match) {
 //       return res.status(400).json({ error: 'Match percentage missing in AI response.' });
@@ -119,7 +119,7 @@ const upload = multer({ storage });
 
 //     // Extract number from "90%" → 90
 //     const matchPercentage = parseFloat(matchResult.match.replace('%', ''));
-    
+
 //     // Validate match percentage
 //     if (isNaN(matchPercentage)) {
 //       return res.status(400).json({ error: 'Invalid match percentage format.' });
@@ -138,7 +138,7 @@ const upload = multer({ storage });
 
 //     await application.save();
 //     res.status(201).json({ success: true, application });
-    
+
 //   } catch (err) {
 //     console.error('Application save failed:', err);
 //     res.status(500).json({ error: 'Internal server error while saving application.' });
@@ -155,29 +155,29 @@ const upload = multer({ storage });
 //       return res.status(409).json({ error: 'You have already applied for this job.' });
 //     }
 //     const { userId, candidateName, email, jobId, result } = req.body;
-    
+
 //     console.log('Full request body:', JSON.stringify(req.body, null, 2));
 //     console.log('Result structure:', result);
-    
+
 //     // Handle the actual data structure - result is an array with stringified JSON
 //     let resultData;
-    
+
 //     if (result && Array.isArray(result) && result.length > 0) {
 //       // First parse the stringified JSON in the array
 //       const parsedResult = JSON.parse(result[0]);
 //       // Then access the output from the parsed object
 //       resultData = parsedResult[0]?.output;
 //     }
-    
+
 //     console.log('Extracted resultData:', resultData);
-    
+
 //     if (!resultData) {
 //       return res.status(400).json({ error: 'No output from AI.' });
 //     }
 
 //     // Extract JSON from markdown code block
 //     const jsonMatch = resultData.match(/```json\s*([\s\S]*?)\s*```/);
-    
+
 //     if (!jsonMatch || !jsonMatch[1]) {
 //       return res.status(400).json({ error: 'AI output does not contain valid JSON format.' });
 //     }
@@ -197,7 +197,7 @@ const upload = multer({ storage });
 //     }
 
 //     const matchResult = parsedData[0];
-    
+
 //     // Validate that match field exists
 //     if (!matchResult || !matchResult.match) {
 //       return res.status(400).json({ error: 'Match percentage missing in AI response.' });
@@ -205,7 +205,7 @@ const upload = multer({ storage });
 
 //     // Extract number from "90%" → 90
 //     const matchPercentage = parseFloat(matchResult.match.replace('%', ''));
-    
+
 //     // Validate match percentage
 //     if (isNaN(matchPercentage)) {
 //       return res.status(400).json({ error: 'Invalid match percentage format.' });
@@ -225,7 +225,7 @@ const upload = multer({ storage });
 
 //     await application.save();
 //     res.status(201).json({ success: true, application });
-    
+
 //   } catch (err) {
 //     console.error('Application save failed:', err);
 //     res.status(500).json({ error: 'Internal server error while saving application.' });
@@ -321,29 +321,53 @@ router.post('/', upload.single('resume'), async (req, res) => {
     }
 
     let resultData;
-    if (result && Array.isArray(result) && result.length > 0) {
-      const parsedResult = JSON.parse(result[0]);
-      resultData = parsedResult[0]?.output;
+    let matchPercentage;
+    let reason = '';
+
+    // NEW: Check if result is already a clean object from internal AI
+    if (result && typeof result === 'object' && result.match) {
+      matchPercentage = parseFloat(String(result.match).replace('%', ''));
+      reason = result.reason || '';
+    }
+    // OLD: Legacy n8n parsing
+    else {
+      if (result && Array.isArray(result) && result.length > 0) {
+        try {
+          const parsedResult = JSON.parse(result[0]);
+          resultData = parsedResult[0]?.output;
+        } catch (e) { resultData = result[0]; } // Fallback
+      }
+
+      if (!resultData) {
+        return res.status(400).json({ error: 'No output from AI.' });
+      }
+
+      // Try extracting JSON from markdown if present
+      const jsonMatch = resultData.match(/```json\s*([\s\S]*?)\s*```/);
+      let parsedData;
+
+      if (jsonMatch && jsonMatch[1]) {
+        try {
+          parsedData = JSON.parse(jsonMatch[1].trim());
+        } catch (err) { }
+      } else {
+        // Maybe it's already JSON string?
+        try {
+          parsedData = JSON.parse(resultData);
+        } catch (err) { }
+      }
+
+      if (!parsedData) {
+        return res.status(400).json({ error: 'Invalid JSON format from AI.' });
+      }
+
+      // Handle array format from n8n
+      const matchResult = Array.isArray(parsedData) ? parsedData[0] : parsedData;
+
+      matchPercentage = parseFloat(String(matchResult.match).replace('%', ''));
+      reason = matchResult.reason || '';
     }
 
-    if (!resultData) {
-      return res.status(400).json({ error: 'No output from AI.' });
-    }
-
-    const jsonMatch = resultData.match(/```json\s*([\s\S]*?)\s*```/);
-    if (!jsonMatch || !jsonMatch[1]) {
-      return res.status(400).json({ error: 'AI output does not contain valid JSON format.' });
-    }
-
-    let parsedData;
-    try {
-      parsedData = JSON.parse(jsonMatch[1].trim());
-    } catch (err) {
-      return res.status(400).json({ error: 'Invalid JSON format from AI.' });
-    }
-
-    const matchResult = parsedData[0];
-    const matchPercentage = parseFloat(matchResult.match.replace('%', ''));
     if (isNaN(matchPercentage)) {
       return res.status(400).json({ error: 'Invalid match percentage format.' });
     }
@@ -355,7 +379,7 @@ router.post('/', upload.single('resume'), async (req, res) => {
       jobId,
       result: {
         match: matchPercentage,
-        reason: matchResult.reason || '',
+        reason: reason,
       },
       resumeUrl: req.file ? `/uploads/${req.file.filename}` : ''
     });
@@ -386,14 +410,14 @@ router.put('/bulk-status', async (req, res) => {
 
     // Find all applications and update them
     const applications = await Application.find({ _id: { $in: applicationIds } });
-    
+
     if (applications.length === 0) {
       return res.status(404).json({ success: false, error: 'No applications found' });
     }
 
     // Prepare bulk email data
     const emailPromises = [];
-    
+
     for (const application of applications) {
       // Update application status
       application.result.status = status;
@@ -425,13 +449,13 @@ router.put('/bulk-status', async (req, res) => {
 
     // Send all emails concurrently
     const emailResults = await Promise.allSettled(emailPromises);
-    
+
     // Count successful emails
     const successfulEmails = emailResults.filter(result => result.status === 'fulfilled' && result.value !== null).length;
     const failedEmails = emailResults.length - successfulEmails;
 
-    res.json({ 
-      success: true, 
+    res.json({
+      success: true,
       message: `Successfully updated ${applications.length} application(s).`,
       emailStats: {
         successful: successfulEmails,

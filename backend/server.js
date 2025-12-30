@@ -127,8 +127,8 @@ dbconnect()
 
 
 // mongoose.connect('mongodb://mongo:sBDFlgIdujlhYFnooPxbxJJCVYZqAQTH@switchback.proxy.rlwy.net:15692')
-  // .then(() => console.log('MongoDB connected'))
-  // .catch(err => console.error('MongoDB connection error:', err));
+// .then(() => console.log('MongoDB connected'))
+// .catch(err => console.error('MongoDB connection error:', err));
 
 // Seed default recruiter
 const seedDefaultRecruiter = async () => {
@@ -165,7 +165,10 @@ app.get('/', (req, res) => {
 });
 
 const notificationRoutes = require('./routes/notifications');
+const aiRoutes = require('./routes/ai'); // New AI Route
+
 app.use('/api/notifications', notificationRoutes);
+app.use('/api/ai', aiRoutes); // Register /api/ai/analyze endpoint
 app.get('/', (req, res) => {
   res.send('API is running...');
 });
