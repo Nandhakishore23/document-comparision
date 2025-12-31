@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './Chatbot.css';
+import BASE_URL from '../apiConfig';
 
 const ChatBot = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,7 +13,7 @@ const ChatBot = () => {
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
 
-  const WEBHOOK_URL = 'http://localhost:5000/api/ai/chat';
+  const WEBHOOK_URL = `${BASE_URL}/api/ai/chat`;
 
   // Generate a unique session ID when component mounts
   useEffect(() => {
