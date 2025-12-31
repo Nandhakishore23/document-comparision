@@ -1,86 +1,8 @@
-// import React, { useEffect, useState } from 'react';
-// import Layout from './Layout';
-
-// const Status = () => {
-//   const [applications, setApplications] = useState([]);
-//   const [loading, setLoading] = useState(true);
-//   const [error, setError] = useState('');
-
-//   useEffect(() => {
-//     // 🧠 Get user info from localStorage/sessionStorage
-//     const user = JSON.parse(localStorage.getItem('user')); // Example
-//     const userId = user?.id || user?._id;
-
-//     if (!userId) {
-//       setError('User not logged in.');
-//       setLoading(false);
-//       return;
-//     }
-
-//     const fetchApplications = async () => {
-//       try {
-//         const res = await fetch(`https://document-comparision-ai0x.onrender.com/api/applications/user/${userId}`);
-//         const data = await res.json();
-
-//         if (data.success) {
-//           setApplications(data.applications);
-//         } else {
-//           setError('Failed to fetch applications');
-//         }
-//       } catch (err) {
-//         setError('Error fetching applications');
-//       } finally {
-//         setLoading(false);
-//       }
-//     };
-
-//     fetchApplications();
-//   }, []);
-
-//   return (
-//     <Layout>
-//     <div className="candidate-status">
-//       <h2>My Application Status</h2>
-//       {loading ? (
-//         <p>Loading...</p>
-//       ) : error ? (
-//         <p style={{ color: 'red' }}>{error}</p>
-//       ) : applications.length === 0 ? (
-//         <p>No applications found.</p>
-//       ) : (
-//         <table>
-//           <thead>
-//             <tr>
-//               <th>Job Title</th>
-//               <th>Match %</th>
-//               <th>Status</th>
-//               <th>Applied At</th>
-//             </tr>
-//           </thead>
-//           <tbody>
-//             {applications.map((app, i) => (
-//               <tr key={i}>
-//                 <td>{app.jobId?.title || 'N/A'}</td>
-//                 <td>{app.result?.match || 'N/A'}</td>
-//                 <td>{app.result?.status || 'Pending'}</td>
-//                 <td>{new Date(app.createdAt).toLocaleDateString('en-GB')}</td>
-//               </tr>
-//             ))}
-//           </tbody>
-//         </table>
-//       )}
-//     </div>
-//     </Layout>
-//   );
-// };
-
-// export default Status;
-
-
 import React, { useEffect, useState } from 'react';
 import Bot from './Chatbot';
 import Layout from './Layout';
 import './Status.css';
+import BASE_URL from '../apiConfig';
 
 const Status = () => {
   const [applications, setApplications] = useState([]);
@@ -105,7 +27,7 @@ const Status = () => {
 
     const fetchApplications = async () => {
       try {
-        const res = await fetch(`https://document-comparision-ai0x.onrender.com/api/applications/user/${userId}`);
+        const res = await fetch(`${BASE_URL}/api/applications/user/${userId}`);
         const data = await res.json();
 
         if (data.success) {
@@ -133,7 +55,7 @@ const Status = () => {
 
     apps.forEach(app => {
       const status = app.result?.status?.toLowerCase() || 'pending';
-      
+
       if (!status || status === 'pending') {
         pending++;
       } else if (status === 'approved') {
@@ -151,9 +73,9 @@ const Status = () => {
 
   const getStatusClass = (status) => {
     if (!status) return 'status-pending';
-    
+
     const statusLower = status.toLowerCase();
-    
+
     switch (statusLower) {
       case 'approved':
         return 'status-approved';
@@ -217,7 +139,7 @@ const Status = () => {
     <Layout>
       <div className="candidate-status">
         <h2>My Application Status</h2>
-        
+
         {/* Statistics Overview */}
         <div className="status-overview">
           <div className="stat-card total">
