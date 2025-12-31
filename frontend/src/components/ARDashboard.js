@@ -145,7 +145,7 @@
 // //   year: 'numeric'
 // // })}</p>
 
-                  
+
 // //                 </div>
 // //               ))
 // //             ) : (
@@ -593,7 +593,7 @@
 // };
 
 
-  
+
 
 
 //   return (
@@ -622,17 +622,17 @@
 //                 <h3 className="job-title">{job.title}</h3>
 //                 <div className="job-type-badge">Full Time</div>
 //               </div>
-              
+
 //               <div className="job-role">
 //                 <span className="role-icon">💼</span>
 //                 <span>{job.role}</span>
 //               </div>
-              
+
 //               <div className="job-experience">
 //                 <span className="exp-icon">📊</span>
 //                 <span>{job.experience || 'Not specified'}</span>
 //               </div>
-              
+
 //               <div className="job-skills">
 //                 <span className="skills-icon">🛠️</span>
 //                 <div className="skills-list">
@@ -644,7 +644,7 @@
 //                   )}
 //                 </div>
 //               </div>
-              
+
 //               <div className="job-card-footer">
 //                 <button className="apply-btn">View Details & Apply</button>
 //               </div>
@@ -668,24 +668,24 @@
 //                 <h2>{selectedJob.title}</h2>
 //                 <button className="close-btn" onClick={closeModal}>×</button>
 //               </div>
-              
+
 //               <div className="modal-body">
 //                 <div className="job-details-section">
 //                   <div className="detail-row">
 //                     <span className="detail-label">Role:</span>
 //                     <span className="detail-value">{selectedJob.role}</span>
 //                   </div>
-                  
+
 //                   <div className="detail-row">
 //                     <span className="detail-label">Experience:</span>
 //                     <span className="detail-value">{selectedJob.experience || 'Not specified'}</span>
 //                   </div>
-                  
+
 //                   <div className="detail-row full-width">
 //                     <span className="detail-label">Description:</span>
 //                     <p className="job-description">{selectedJob.description}</p>
 //                   </div>
-                  
+
 //                   <div className="detail-row full-width">
 //                     <span className="detail-label">Required Skills:</span>
 //                     <div className="modal-skills-list">
@@ -847,7 +847,7 @@
 //     try {
 //       const response = await fetch(`https://document-comparision-ai0x.onrender.com/api/resumes/${userId}`);
 //       const data = await response.json();
-      
+
 //       if (response.ok) {
 //         setUserResumes(data);
 //         setHasExistingResume(data.length > 0);
@@ -875,7 +875,7 @@
 //     setIsModalOpen(true);
 //     setResume(null);
 //     setUseExistingResume(false);
-    
+
 //     // Check if user has existing resumes
 //     await checkUserResumes(user._id);
 //   };
@@ -927,7 +927,7 @@
 
 //     try {
 //       let resumeData;
-      
+
 //       if (useExistingResume) {
 //         // Get the existing resume data
 //         const resumeResponse = await fetch(`https://document-comparision-ai0x.onrender.com/api/resumes/download/${selectedResumeId}`);
@@ -974,7 +974,7 @@
 //             result: [result],
 //           }),
 //         });
-        
+
 //         if (saveRes.status === 409) {
 //           alert('You have already applied for this job.');
 //           return;
@@ -1024,17 +1024,17 @@
 //                 <h3 className="job-title">{job.title}</h3>
 //                 <div className="job-type-badge">Full Time</div>
 //               </div>
-              
+
 //               <div className="job-role">
 //                 <span className="role-icon">💼</span>
 //                 <span>{job.role}</span>
 //               </div>
-              
+
 //               <div className="job-experience">
 //                 <span className="exp-icon">📊</span>
 //                 <span>{job.experience || 'Not specified'}</span>
 //               </div>
-              
+
 //               <div className="job-skills">
 //                 <span className="skills-icon">🛠️</span>
 //                 <div className="skills-list">
@@ -1046,7 +1046,7 @@
 //                   )}
 //                 </div>
 //               </div>
-              
+
 //               <div className="job-card-footer">
 //                 <button className="apply-btn">View Details & Apply</button>
 //               </div>
@@ -1070,24 +1070,24 @@
 //                 <h2>{selectedJob.title}</h2>
 //                 <button className="close-btn" onClick={closeModal}>×</button>
 //               </div>
-              
+
 //               <div className="modal-body">
 //                 <div className="job-details-section">
 //                   <div className="detail-row">
 //                     <span className="detail-label">Role:</span>
 //                     <span className="detail-value">{selectedJob.role}</span>
 //                   </div>
-                  
+
 //                   <div className="detail-row">
 //                     <span className="detail-label">Experience:</span>
 //                     <span className="detail-value">{selectedJob.experience || 'Not specified'}</span>
 //                   </div>
-                  
+
 //                   <div className="detail-row full-width">
 //                     <span className="detail-label">Description:</span>
 //                     <p className="job-description">{selectedJob.description}</p>
 //                   </div>
-                  
+
 //                   <div className="detail-row full-width">
 //                     <span className="detail-label">Required Skills:</span>
 //                     <div className="modal-skills-list">
@@ -1100,7 +1100,7 @@
 
 //                 <div className="application-section">
 //                   <h3>Apply for this position</h3>
-                  
+
 //                   {isLoadingResumes ? (
 //                     <div className="loading-resumes">
 //                       <span className="loading-spinner"></span>
@@ -1229,12 +1229,44 @@ const ARDashboard = () => {
   const [hasExistingResume, setHasExistingResume] = useState(false);
   const [useExistingResume, setUseExistingResume] = useState(false);
   const [isLoadingResumes, setIsLoadingResumes] = useState(false);
-  
+
   // Search and filter states
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedRole, setSelectedRole] = useState('');
   const [selectedExperience, setSelectedExperience] = useState('');
   const [sortBy, setSortBy] = useState('title');
+
+  // State to store user's applied jobs
+  const [myApplications, setMyApplications] = useState({});
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (!user) {
+      window.location.href = '/login';
+    } else {
+      // Fetch User's Applications
+      const fetchMyApplications = async () => {
+        try {
+          const res = await fetch(`http://localhost:5000/api/applications/user/${user._id}`);
+          const data = await res.json();
+          if (data.success) {
+            const appMap = {};
+            data.applications.forEach(app => {
+              if (app.jobId) {
+                // Handle populated or direct ID
+                const jId = app.jobId._id || app.jobId;
+                appMap[jId] = app;
+              }
+            });
+            setMyApplications(appMap);
+          }
+        } catch (error) {
+          console.error('Error fetching applications:', error);
+        }
+      };
+      fetchMyApplications();
+    }
+  }, []);
 
   // Fetch jobs from backend
   useEffect(() => {
@@ -1242,7 +1274,6 @@ const ARDashboard = () => {
       try {
         const response = await fetch('https://document-comparision-ai0x.onrender.com/api/jobs');
         const data = await response.json();
-        console.log('Fetched jobs:', data);
 
         // Ensure you're filtering out closed jobs
         let jobsList = [];
@@ -1268,6 +1299,7 @@ const ARDashboard = () => {
     fetchJobs();
   }, []);
 
+  // ... (keeping filters useEffect) 
   // Filter and search jobs
   useEffect(() => {
     let filtered = [...jobs];
@@ -1284,7 +1316,7 @@ const ARDashboard = () => {
 
     // Role filter
     if (selectedRole) {
-      filtered = filtered.filter(job => 
+      filtered = filtered.filter(job =>
         job.role.toLowerCase().includes(selectedRole.toLowerCase())
       );
     }
@@ -1328,6 +1360,8 @@ const ARDashboard = () => {
     setFilteredJobs(filtered);
   }, [jobs, searchQuery, selectedRole, selectedExperience, sortBy]);
 
+  // ... (rest of helper functions)
+
   // Get unique roles for filter dropdown
   const getUniqueRoles = () => {
     const roles = jobs.map(job => job.role);
@@ -1348,7 +1382,7 @@ const ARDashboard = () => {
     try {
       const response = await fetch(`https://document-comparision-ai0x.onrender.com/api/resumes/${userId}`);
       const data = await response.json();
-      
+
       if (response.ok) {
         setUserResumes(data);
         setHasExistingResume(data.length > 0);
@@ -1376,9 +1410,11 @@ const ARDashboard = () => {
     setIsModalOpen(true);
     setResume(null);
     setUseExistingResume(false);
-    
-    // Check if user has existing resumes
-    await checkUserResumes(user._id);
+
+    // Only fetch resumes if NOT already applied
+    if (!myApplications[job._id]) {
+      await checkUserResumes(user._id);
+    }
   };
 
   const closeModal = () => {
@@ -1428,10 +1464,10 @@ const ARDashboard = () => {
 
     try {
       let resumeData;
-      
+
       if (useExistingResume) {
         // Get the existing resume data
-        const resumeResponse = await fetch(`https://document-comparision-ai0x.onrender.com/api/resumes/download/${selectedResumeId}`);
+        const resumeResponse = await fetch(`http://localhost:5000/api/resumes/download/${selectedResumeId}`);
         if (!resumeResponse.ok) {
           throw new Error('Failed to fetch existing resume');
         }
@@ -1454,46 +1490,58 @@ const ARDashboard = () => {
       formData.append('skills', selectedJob.skills || '');
       formData.append('experience', selectedJob.experience || '');
 
-      // Send to n8n webhook
-      const res = await fetch('http://localhost:5678/webhook/test', {
+      // NEW: Internal AI Endpoint
+      const aiRes = await fetch('http://localhost:5000/api/ai/analyze', {
         method: 'POST',
         body: formData,
       });
 
-      const result = await res.text();
+      const aiData = await aiRes.json();
 
-      if (res.ok) {
-        // Save application in MongoDB
-        const saveRes = await fetch('https://document-comparision-ai0x.onrender.com/api/applications', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            userId: user._id,
-            candidateName: user.name,
-            email: user.email,
-            jobId: selectedJob._id,
-            result: [result],
-          }),
-        });
-        
-        if (saveRes.status === 409) {
-          alert('You have already applied for this job.');
-          return;
-        }
-
-        const saveData = await saveRes.json();
-        if (saveRes.ok) {
-          alert('Applied Successfully!');
-          closeModal();
-        } else {
-          alert(saveData.error || 'Failed to store application.');
-        }
-      } else {
-        alert('n8n returned an error');
+      if (!aiRes.ok || !aiData.success) {
+        throw new Error(aiData.error || 'AI Analysis failed');
       }
+
+      // Save application in MongoDB
+      const saveRes = await fetch('http://localhost:5000/api/applications', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          userId: user._id,
+          candidateName: user.name,
+          email: user.email,
+          jobId: selectedJob._id,
+          result: aiData.analysis, // Send clean JSON object
+        }),
+      });
+
+      if (saveRes.status === 409) {
+        alert('You have already applied for this job.');
+        return;
+      }
+
+      const saveData = await saveRes.json();
+      if (saveRes.ok) {
+        alert('Applied Successfully!');
+
+        // Update local state immediately so UI reflects "Applied"
+        setMyApplications(prev => ({
+          ...prev,
+          [selectedJob._id]: {
+            result: aiData.analysis,
+            status: 'Applied',
+            jobId: selectedJob._id
+          }
+        }));
+
+        closeModal();
+      } else {
+        alert(saveData.error || 'Failed to store application.');
+      }
+
     } catch (error) {
       console.error('Application error:', error);
-      alert('Error occurred while applying.');
+      alert(`Error occurred: ${error.message}`);
     } finally {
       setIsApplying(false);
     }
@@ -1512,8 +1560,8 @@ const ARDashboard = () => {
           <div className="search-bar-container">
             <div className="search-input-wrapper">
               <svg className="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                <circle cx="11" cy="11" r="8"/>
-                <path d="21 21l-4.35-4.35"/>
+                <circle cx="11" cy="11" r="8" />
+                <path d="M21 21l-4.35-4.35" />
               </svg>
               <input
                 type="text"
@@ -1614,17 +1662,17 @@ const ARDashboard = () => {
                 <h3 className="job-title">{job.title}</h3>
                 <div className="job-type-badge">Full Time</div>
               </div>
-              
+
               <div className="job-role">
                 <span className="role-icon">💼</span>
                 <span>{job.role}</span>
               </div>
-              
+
               <div className="job-experience">
                 <span className="exp-icon">📊</span>
                 <span>{job.experience || 'Not specified'}</span>
               </div>
-              
+
               <div className="job-skills">
                 <span className="skills-icon">🛠️</span>
                 <div className="skills-list">
@@ -1636,7 +1684,7 @@ const ARDashboard = () => {
                   )}
                 </div>
               </div>
-              
+
               <div className="job-card-footer">
                 <button className="apply-btn">View Details & Apply</button>
               </div>
@@ -1671,24 +1719,24 @@ const ARDashboard = () => {
                 <h2>{selectedJob.title}</h2>
                 <button className="close-btn" onClick={closeModal}>×</button>
               </div>
-              
+
               <div className="modal-body">
                 <div className="job-details-section">
                   <div className="detail-row">
                     <span className="detail-label">Role:</span>
                     <span className="detail-value">{selectedJob.role}</span>
                   </div>
-                  
+
                   <div className="detail-row">
                     <span className="detail-label">Experience:</span>
                     <span className="detail-value">{selectedJob.experience || 'Not specified'}</span>
                   </div>
-                  
+
                   <div className="detail-row full-width">
                     <span className="detail-label">Description:</span>
                     <p className="job-description">{selectedJob.description}</p>
                   </div>
-                  
+
                   <div className="detail-row full-width">
                     <span className="detail-label">Required Skills:</span>
                     <div className="modal-skills-list">
@@ -1700,84 +1748,94 @@ const ARDashboard = () => {
                 </div>
 
                 <div className="application-section">
-                  <h3>Apply for this position</h3>
-                  
-                  {isLoadingResumes ? (
-                    <div className="loading-resumes">
-                      <span className="loading-spinner"></span>
-                      <span>Checking your resumes...</span>
+                  <h3>{myApplications[selectedJob._id] ? 'Application Status' : 'Apply for this position'}</h3>
+
+                  {myApplications[selectedJob._id] ? (
+                    <div className="already-applied-view" style={{ textAlign: 'center', padding: '30px', backgroundColor: '#f0fdf4', borderRadius: '12px', border: '2px solid #86efac' }}>
+                      <div style={{ fontSize: '50px', marginBottom: '15px' }}>🎉</div>
+                      <h4 style={{ color: '#166534', margin: '0 0 10px 0', fontSize: '24px' }}>Application Submitted!</h4>
+                      <p style={{ color: '#374151', fontSize: '16px' }}>You have already applied for this position <strong>{new Date(myApplications[selectedJob._id].appliedAt || Date.now()).toLocaleDateString()}</strong>.</p>
                     </div>
                   ) : (
                     <>
-                      {hasExistingResume && (
-                        <div className="resume-options">
-                          <div className="option-buttons">
-                            <button
-                              className={`option-btn ${useExistingResume ? 'active' : ''}`}
-                              onClick={handleUseExistingResume}
-                            >
-                              Use Existing Resume
-                            </button>
-                            <button
-                              className={`option-btn ${!useExistingResume ? 'active' : ''}`}
-                              onClick={handleUploadNewResume}
-                            >
-                              Upload New Resume
-                            </button>
-                          </div>
-                        </div>
-                      )}
-
-                      {useExistingResume && hasExistingResume ? (
-                        <div className="existing-resumes-section">
-                          <h4>Select from your existing resumes:</h4>
-                          <div className="resume-select-container">
-                            <select
-                              value={selectedResumeId}
-                              onChange={(e) => setSelectedResumeId(e.target.value)}
-                              className="resume-select"
-                            >
-                              {userResumes.map((resume) => (
-                                <option key={resume._id} value={resume._id}>
-                                  {resume.filename}
-                                </option>
-                              ))}
-                            </select>
-                          </div>
-                          {selectedResumeId && (
-                            <div className="selected-resume-info">
-                              <span className="file-icon">✓</span>
-                              <span>Selected: {userResumes.find(r => r._id === selectedResumeId)?.filename}</span>
-                            </div>
-                          )}
+                      {isLoadingResumes ? (
+                        <div className="loading-resumes">
+                          <span className="loading-spinner"></span>
+                          <span>Checking your resumes...</span>
                         </div>
                       ) : (
-                        <div className="file-upload-container">
-                          <label htmlFor="resume-upload" className="file-upload-label">
-                            <div className="upload-icon">📄</div>
-                            <div className="upload-text">
-                              <span className="upload-title">
-                                {hasExistingResume ? 'Upload New Resume' : 'Upload Resume'}
-                              </span>
-                              <span className="upload-subtitle">PDF, DOC, DOCX files only</span>
+                        <>
+                          {hasExistingResume && (
+                            <div className="resume-options">
+                              <div className="option-buttons">
+                                <button
+                                  className={`option-btn ${useExistingResume ? 'active' : ''}`}
+                                  onClick={handleUseExistingResume}
+                                >
+                                  Use Existing Resume
+                                </button>
+                                <button
+                                  className={`option-btn ${!useExistingResume ? 'active' : ''}`}
+                                  onClick={handleUploadNewResume}
+                                >
+                                  Upload New Resume
+                                </button>
+                              </div>
                             </div>
-                          </label>
-                          <input
-                            id="resume-upload"
-                            type="file"
-                            onChange={handleResumeChange}
-                            accept=".pdf,.doc,.docx"
-                            className="file-input"
-                          />
-                        </div>
-                      )}
+                          )}
 
-                      {resume && (
-                        <div className="selected-file">
-                          <span className="file-icon">✓</span>
-                          <span className="file-name">{resume.name}</span>
-                          <span className="file-size">({(resume.size / 1024 / 1024).toFixed(2)} MB)</span>
-                        </div>
+                          {useExistingResume && hasExistingResume ? (
+                            <div className="existing-resumes-section">
+                              <h4>Select from your existing resumes:</h4>
+                              <div className="resume-select-container">
+                                <select
+                                  value={selectedResumeId}
+                                  onChange={(e) => setSelectedResumeId(e.target.value)}
+                                  className="resume-select"
+                                >
+                                  {userResumes.map((resume) => (
+                                    <option key={resume._id} value={resume._id}>
+                                      {resume.filename}
+                                    </option>
+                                  ))}
+                                </select>
+                              </div>
+                              {selectedResumeId && (
+                                <div className="selected-resume-info">
+                                  <span className="file-icon">✓</span>
+                                  <span>Selected: {userResumes.find(r => r._id === selectedResumeId)?.filename}</span>
+                                </div>
+                              )}
+                            </div>
+                          ) : (
+                            <div className="file-upload-container">
+                              <label htmlFor="resume-upload" className="file-upload-label">
+                                <div className="upload-icon">📄</div>
+                                <div className="upload-text">
+                                  <span className="upload-title">
+                                    {hasExistingResume ? 'Upload New Resume' : 'Upload Resume'}
+                                  </span>
+                                  <span className="upload-subtitle">PDF, DOC, DOCX files only</span>
+                                </div>
+                              </label>
+                              <input
+                                id="resume-upload"
+                                type="file"
+                                onChange={handleResumeChange}
+                                accept=".pdf,.doc,.docx"
+                                className="file-input"
+                              />
+                            </div>
+                          )}
+
+                          {resume && (
+                            <div className="selected-file">
+                              <span className="file-icon">✓</span>
+                              <span className="file-name">{resume.name}</span>
+                              <span className="file-size">({(resume.size / 1024 / 1024).toFixed(2)} MB)</span>
+                            </div>
+                          )}
+                        </>
                       )}
                     </>
                   )}
@@ -1786,8 +1844,8 @@ const ARDashboard = () => {
 
               <div className="modal-footer">
                 <button className="cancel-btn" onClick={closeModal}>Cancel</button>
-                <button 
-                  className="submit-application-btn" 
+                <button
+                  className="submit-application-btn"
                   onClick={handleApply}
                   disabled={(!resume && !useExistingResume) || isApplying || isLoadingResumes}
                 >
